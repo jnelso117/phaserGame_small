@@ -22,14 +22,27 @@ BasicGame.Game = function (game) {
 
     //	You can use any of these from any function within this State.
     //	But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
+    this.BG;
+    this.item1;
+    this.item2;
+    this.item3;
 
 };
 
 BasicGame.Game.prototype = {
 
 	create: function () {
-
+        this.BG = this.add.image(0,0,'sky');
+        this.item1 = this.add.image(0,0, 'diamond');
+        this.item2 = this.add.image(this.world.centerX, 0, 'firstaid');
+        this.item3 = this.add.image(this.world.centerX, this.world.centerY, 'star');
+        this.item1.inputEnabled = true;
+        this.item2.inputEnabled = true;
+        this.item3.inputEnabled = true;
+        
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+        
+        
 
 	},
 

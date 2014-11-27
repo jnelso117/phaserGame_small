@@ -1,24 +1,30 @@
 BasicGame.Preloader = function(game) {
-    this.sky = null;
-    this.firstaid = null;
-    this.diamond = null;
-    this.ready = false;
+   this.sky = null;
+   this.firstaid = null;
+   this.diamond = null;
+   this.ready = false;
+   this.star = null;
+
 };
 
 BasicGame.Preloader.prototype = {
     
     preload: function() {
-    this.sky = this.add.sprite(0,0, 'sky');
-    this.firstaid = this.add.sprite(this.world.centerX,0, 'firstaid');
-    this.diamond = this.add.sprite(this.world.centerX, this.world.centerY, 'diamond');
-    },
-        
+    //this.sky = this.load.image('sky', 'assets/sky.png');
+    this.load.image('sky', 'assets/sky.png');
+    this.load.image('diamond', 'assets/diamond.png');
+    this.load.image('star','assets/star.png');
+    this.load.image('firstaid', 'assets/firstaid.png');
+   
+    },  
+    
 create: function () {
-    this.sky.cropEnabled = false;
+
 },
     
 update: function() {
     this.ready = true;
+    this.state.start('Menu');
 }
     
 };
