@@ -1,4 +1,3 @@
-
 BasicGame.Game = function (game) {
 
 	//	When a State is added to Phaser it automatically has the following properties set on it, even if they already exist:
@@ -26,6 +25,7 @@ BasicGame.Game = function (game) {
     this.item1;
     this.item2;
     this.item3;
+    this.text = '';
 
 };
 
@@ -39,9 +39,10 @@ BasicGame.Game.prototype = {
         this.item1.inputEnabled = true;
         this.item2.inputEnabled = true;
         this.item3.inputEnabled = true;
-        
+        this.item1.events.onInputDown.addOnce(this.startDiamondLevel,this);
+        this.item2.events.onInputDown.addOnce(this.startFirstAidLevel, this);
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-        
+         text = this.add.text(0,this.world.centerY, BasicGame.levelCounter, { fill: '#fffff' });
         
 
 	},
@@ -49,17 +50,41 @@ BasicGame.Game.prototype = {
 	update: function () {
 
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+        //Statements to check if other levels have been completed
+        
+         if (BasicGame.diamondDone === false) 
+         { 
+            this.item1.inputEnabled = false; //user can no longer access stage
+            this.item1 = this.add.image(0,0, 'diamondComplete'); //replace graphic
+        }
+        if (BasicGame.aidDone === false) 
+        {
+             this.item2.inputEnabled = false; //user can no longer access stage
+            this.item2 = this.add.image(0,0, 'firstaidComplete'); //replace graphic
+        }
+        if ( BasicGame.aidDone === false && BasicGame.diamondDone === false) //checks to see if the levels were cleared
+        {
+            this.state.start('gameOver');
+        }
+        
 
 	},
 
-	quitGame: function (pointer) {
+	startDiamondLevel: function (pointer) {
 
 		//	Here you should destroy anything you no longer need.
 		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
 		//	Then let's go back to the main menu.
-		this.state.start('MainMenu');
+		this.state.start('diamondLevel');
 
-	}
+	},
+    startFirstAidLevel: function (pointer) {
+        //	Here you should destroy anything you no longer need.
+		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
+
+		//	Then let's go back to the main menu.
+		this.state.start('firstaidLevel');
+    }
 
 };

@@ -1,8 +1,13 @@
 var BasicGame = {
-//global variables go here
+     levelCounter: 0,
+    diamondDone: true,
+    aidDone: true 
 };
 
-BasicGame.Boot = function (game) {this.game = game},
+
+BasicGame.Boot = function (game) {
+     
+    this.game = game},
 
 BasicGame.Boot.prototype = {
     preload : function () {
