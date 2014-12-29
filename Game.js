@@ -22,9 +22,14 @@ BasicGame.Game = function (game) {
     //	You can use any of these from any function within this State.
     //	But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
     this.BG;
+    //Items are named from left to right and top to bottom.  
+    //Items 1-3 are the top items and 4-6 are the bottom.
     this.item1;
     this.item2;
     this.item3;
+    this.item4;
+    this.item5;
+    this.item6;
     this.text = '';
 
 };
@@ -36,11 +41,14 @@ BasicGame.Game.prototype = {
         this.item1 = this.add.image(0,0, 'diamond');
         this.item2 = this.add.image(this.world.centerX, 0, 'firstaid');
         this.item3 = this.add.image(this.world.centerX, this.world.centerY, 'star');
+        this.item4 = this.add.image(0,570, 'diamond');
+        this.item5 = this.add.image(this.world.centerX, 570, 'firstaid');
+        this.item6 = this.add.image(570,570, 'diamond');
         this.item1.inputEnabled = true;
         this.item2.inputEnabled = true;
         this.item3.inputEnabled = true;
-        this.item1.events.onInputDown.addOnce(this.startDiamondLevel,this);
-        this.item2.events.onInputDown.addOnce(this.startFirstAidLevel, this);
+        this.item1.events.onInputDown.add(this.startDiamondLevel,this);
+        this.item2.events.onInputDown.add(this.startFirstAidLevel, this);
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
          text = this.add.text(0,this.world.centerY, BasicGame.levelCounter, { fill: '#fffff' });
         
@@ -62,7 +70,7 @@ BasicGame.Game.prototype = {
              this.item2.inputEnabled = false; //user can no longer access stage
             this.item2 = this.add.image(0,0, 'firstaidComplete'); //replace graphic
         }
-        if ( BasicGame.aidDone === false && BasicGame.diamondDone === false) //checks to see if the levels were cleared
+        if (BasicGame.levelCounter === 6) //checks to see if the levels were cleared
         {
             this.state.start('gameOver');
         }

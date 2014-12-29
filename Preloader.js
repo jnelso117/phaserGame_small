@@ -18,6 +18,7 @@ BasicGame.Preloader.prototype = {
     this.load.image('diamondComplete', 'assets/diamondRed.png'); 
     this.load.image('firstaidComplete', 'assets/firstaidGrey.png');
     this.load.image('gameOver', 'assets/gameOver.png');
+    this.load.image('incorrect', 'assets/incorrect_star.png');
    
     },  
     

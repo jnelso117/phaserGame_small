@@ -16,9 +16,9 @@ BasicGame.gameOver.prototype = {
        
     },
      returnToMenu: function (pointer) {
-//        BasicGame.levelCounter = 0;
-//        BasicGame.diamondDone = true;
-//        BasicGame.aidDone = true;
+        BasicGame.levelCounter = 0;
+        BasicGame.diamondDone = true;
+        BasicGame.aidDone = true;
          this.state.start('Preloader');   
         }
 }

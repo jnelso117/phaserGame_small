@@ -1,12 +1,14 @@
 var BasicGame = {
-    levelCounter: 0,
-    diamondDone: true,
-    aidDone: true 
+//global variables go here
+     var levelCounter = 0
+    var diamondDone = true;
+    var aidDone = true;
 };
 
 
-BasicGame.Boot = function (game) {
-     
+BasicGame.Boot = function (game) 
+   
+    
     this.game = game},
 
 BasicGame.Boot.prototype = {
