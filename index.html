@@ -8,7 +8,7 @@
 	<script src="Preloader.js"></script>
 	<script src="Menu.js"></script>
 	<script src="Game.js"></script>
-    <script src="diamondLevel.js"></script>
+    <script src="glassLevel.js"></script>
     <script src="firstaidLevel.js"></script>
     <script src="gameOver.js"></script>
     <style>
@@ -27,7 +27,7 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameContainer');
     game.state.add('Preloader', BasicGame.Preloader); //Responsible for Assets preparation
     game.state.add('Menu', BasicGame.Menu);
     game.state.add('Game', BasicGame.Game);
-    game.state.add('diamondLevel', BasicGame.diamondLevel);
+    game.state.add('glassLevel', BasicGame.glassLevel);
     game.state.add('firstaidLevel', BasicGame.firstaidLevel);
     game.state.add('gameOver', BasicGame.gameOver);
     game.state.start('Boot');

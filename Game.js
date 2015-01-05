@@ -47,7 +47,7 @@ BasicGame.Game.prototype = {
         this.item1.inputEnabled = true;
         this.item2.inputEnabled = true;
         this.item3.inputEnabled = true;
-        this.item1.events.onInputDown.add(this.startDiamondLevel,this);
+        this.item1.events.onInputDown.add(this.startGlassLevel,this);
         this.item2.events.onInputDown.add(this.startFirstAidLevel, this);
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
          text = this.add.text(0,this.world.centerY, BasicGame.levelCounter, { fill: '#fffff' });
@@ -60,7 +60,29 @@ BasicGame.Game.prototype = {
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         //Statements to check if other levels have been completed
         
-         if (BasicGame.diamondDone === false) 
+        /*******************************************
+        
+        Okay, so this is how the update function works in Phaser.
+        
+        "is intended to update positions, physics, scores, to manage user inputs, to invoke collision callbacks, to kill or revive objects, 
+        and so on. It's the heart of your game really. Remember, unless drawing graphics by your own, you don't have to code object rendering, 
+        Phaser does it for you on the object creation order basis."
+        Source:
+        https://github.com/photonstorm/phaser/wiki/Phaser-General-Documentation-:-States
+        
+        The update function is where all the live updates would go once the main items have been created.  
+        I'm using this to check if the student/player has completed the states and replacing the click images with red, non-clickable images.
+        This is my first time using Phaser, so I'm actually not replacing the sprite using the statements I have created, but simply placing
+        them on top of the other.  There is probably a better way to do this, but as of now, this is how I'm getting it to work.  It will
+        really matter when asset management becomes a factor if the game gets larger.  
+        In the same statements, I am ensuring that the images are not clickable via boolean var.
+        
+        You can do this with anything.  If you want the user to do something and provoke a function in the state, you want to put them in the update 
+        function usually.  
+        
+        ********************************************/
+        
+         if (BasicGame.glassLevelComplete === false) 
          { 
             this.item1.inputEnabled = false; //user can no longer access stage
             this.item1 = this.add.image(0,0, 'diamondComplete'); //replace graphic
@@ -78,20 +100,20 @@ BasicGame.Game.prototype = {
 
 	},
 
-	startDiamondLevel: function (pointer) {
+	startGlassLevel: function (pointer) {
 
 		//	Here you should destroy anything you no longer need.
 		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
-		//	Then let's go back to the main menu.
-		this.state.start('diamondLevel');
+		//	Then let's go to the next state.
+		this.state.start('glassLevel');
 
 	},
     startFirstAidLevel: function (pointer) {
         //	Here you should destroy anything you no longer need.
 		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
-		//	Then let's go back to the main menu.
+	    //	Then let's go to the next state.
 		this.state.start('firstaidLevel');
     }
 

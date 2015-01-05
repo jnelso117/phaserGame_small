@@ -1,6 +1,17 @@
 var BasicGame = {
+    
+    /************************************************************
+    
+    This is where global variables will be initialized.  You will call them
+    in other states/stages using BasicGame.varName.
+    
+    Pay close attention to the syntax Phaser uses for Global variables.
+    
+    varName: value,
+    ************************************************************/
+    
     levelCounter: 0,
-    diamondDone: true,
+    glassLevelComplete: true,
     aidDone: true 
 };
 

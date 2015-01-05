@@ -1,6 +1,6 @@
  /******************************************************************
     
-    This Level covers Slides 10 through 13.  
+    This Level covers Slides 6 through 9.  
     
     Item: Drinking Glass
     Details: Clear, non-porous item.  
@@ -9,18 +9,26 @@
     
  ******************************************************************/
     
-BasicGame.firstaidLevel = function(game) {
+BasicGame.glassLevel = function(game) {
  this.background;
  this.image; //image for the level
  this.returnStar; //return to the Menu
+ this.option1;
+ this.option2;
+ this.option3;
+ this.option4;
+ this.response;
  
 };
-BasicGame.firstaidLevel.prototype = {
+BasicGame.glassLevel.prototype = {
+   
     
-   create: function () {
+    
+    
+    create: function () {
         //adding the images to the canvas
         background = this.add.image(0,0, 'sky');
-        image = this.add.sprite(this.world.centerX/2,this.world.centerY/2,'firstaid');
+        image = this.add.sprite(this.world.centerX/2,this.world.centerY/2,'diamond');
         option1 = this.add.sprite(this.world.centerX, this.world.centerY, 'star');
         option2 = this.add.sprite(this.world.centerX, this.world.centerY+50, 'star');
         option3 = this.add.sprite(this.world.centerX, this.world.centerY+100, 'star');
