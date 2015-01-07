@@ -40,16 +40,18 @@ BasicGame.Game.prototype = {
         this.BG = this.add.image(0,0,'sky');
         this.item1 = this.add.image(0,0, 'diamond');
         this.item2 = this.add.image(this.world.centerX, 0, 'firstaid');
-        this.item3 = this.add.image(this.world.centerX, this.world.centerY, 'star');
+        this.item3 = this.add.image(this.world.centerX+300, 0, 'star');
         this.item4 = this.add.image(0,570, 'diamond');
         this.item5 = this.add.image(this.world.centerX, 570, 'firstaid');
-        this.item6 = this.add.image(570,570, 'diamond');
+        this.item6 = this.add.image(this.world.centerX+300,570, 'diamond');
         this.item1.inputEnabled = true;
         this.item2.inputEnabled = true;
         this.item3.inputEnabled = true;
         this.item1.events.onInputDown.add(this.startGlassLevel,this);
-        this.item2.events.onInputDown.add(this.startFirstAidLevel, this);
+        this.item2.events.onInputDown.add(this.startKnobLevel, this);
+        this.item3.events.onInputDown.add(this.startWeaponLevel, this);
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+        //this shows how many stages have been completed
          text = this.add.text(0,this.world.centerY, BasicGame.levelCounter, { fill: '#fffff' });
         
 
@@ -87,12 +89,12 @@ BasicGame.Game.prototype = {
             this.item1.inputEnabled = false; //user can no longer access stage
             this.item1 = this.add.image(0,0, 'diamondComplete'); //replace graphic
         }
-        if (BasicGame.aidDone === false) 
+        if (BasicGame.knobLevelComplete === false) 
         {
              this.item2.inputEnabled = false; //user can no longer access stage
-            this.item2 = this.add.image(0,0, 'firstaidComplete'); //replace graphic
+            this.item2 = this.add.image(this.world.centerX, 0, 'firstaidComplete'); //replace graphic
         }
-        if (BasicGame.levelCounter === 6) //checks to see if the levels were cleared
+        if (BasicGame.levelCounter === 2) //checks to see if the levels were cleared
         {
             this.state.start('gameOver');
         }
@@ -109,12 +111,20 @@ BasicGame.Game.prototype = {
 		this.state.start('glassLevel');
 
 	},
-    startFirstAidLevel: function (pointer) {
+    startKnobLevel: function (pointer) {
         //	Here you should destroy anything you no longer need.
 		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
 	    //	Then let's go to the next state.
-		this.state.start('firstaidLevel');
-    }
+		this.state.start('knobLevel');
+    },
+    startWeaponLevel: function (pointer) {
+         //	Here you should destroy anything you no longer need.
+		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
-};
+	    //	Then let's go to the next state.
+        this.state.start('weaponLevel');
+
+},
+    
+}

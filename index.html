@@ -9,7 +9,11 @@
 	<script src="Menu.js"></script>
 	<script src="Game.js"></script>
     <script src="glassLevel.js"></script>
-    <script src="firstaidLevel.js"></script>
+    <script src="knobLevel.js"></script>
+    <script src="weaponLevel.js"></script>
+    <script src="canLevel.js"></script>
+    <script src="paperLevel.js"></script>
+    <script src="documentLevel.js"></script>
     <script src="gameOver.js"></script>
     <style>
         body {
@@ -28,11 +32,14 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameContainer');
     game.state.add('Menu', BasicGame.Menu);
     game.state.add('Game', BasicGame.Game);
     game.state.add('glassLevel', BasicGame.glassLevel);
-    game.state.add('firstaidLevel', BasicGame.firstaidLevel);
+    game.state.add('knobLevel', BasicGame.knobLevel);
+    game.state.add('weaponLevel', BasicGame.weaponLevel);
+    game.state.add('canLevel', BasicGame.canLevel);
+    game.state.add('paperLevel', BasicGame.paperLevel);
+    game.state.add('documentLevel', BasicGame.documentLevel);
     game.state.add('gameOver', BasicGame.gameOver);
     game.state.start('Boot');
     
-    //game.load('MainMenu', BasicGame.MainMenu);
 }
 </script>
 

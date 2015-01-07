@@ -12,7 +12,11 @@ var BasicGame = {
     
     levelCounter: 0,
     glassLevelComplete: true,
-    aidDone: true 
+    knobLevelComplete: true,
+    weaponLevelComplete: true,
+    newspaperLevelComplete: true,
+    documentLevelComplete: true,
+    canLevelComplete: true,
 };
 
 

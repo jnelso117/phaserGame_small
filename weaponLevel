@@ -1,34 +1,26 @@
  /******************************************************************
     
-    This Level covers Slides 6 through 9.  
+    This Level covers Slides 10 through 13.  
     
-    Item: Drinking Glass
-    Details: Clear, non-porous item.  
+    Item: Doorknob
+    Details: Cannot remove, non-porous item.  
     Fingerprints? Yes.
     Dust at scene
     
  ******************************************************************/
     
-BasicGame.glassLevel = function(game) {
+BasicGame.knobLevel = function(game) {
  this.background;
  this.image; //image for the level
  this.returnStar; //return to the Menu
- this.option1;
- this.option2;
- this.option3;
- this.option4;
- this.response;
  
 };
-BasicGame.glassLevel.prototype = {
-   
+BasicGame.knobLevel.prototype = {
     
-    
-    
-    create: function () {
+   create: function () {
         //adding the images to the canvas
         background = this.add.image(0,0, 'sky');
-        image = this.add.sprite(this.world.centerX/2,this.world.centerY/2,'diamond');
+        image = this.add.sprite(this.world.centerX/2,this.world.centerY/2,'firstaid');
         option1 = this.add.sprite(this.world.centerX, this.world.centerY, 'star');
         option2 = this.add.sprite(this.world.centerX, this.world.centerY+50, 'star');
         option3 = this.add.sprite(this.world.centerX, this.world.centerY+100, 'star');
@@ -71,7 +63,7 @@ BasicGame.glassLevel.prototype = {
         option2.inputEnabled = false;
         option3.inputEnabled = false;
         option4.inputEnabled = false;
-        BasicGame.glassLevelComplete = false;
+        BasicGame.knobLevelComplete = false;
         this.response.setText("A brush and black powder is ideal for processing a clear, nonporous piece of evidence at the scene.  Using the powder, you reveal a fingerprint!  You photograph and collect the print using a tape lift.  All items are packaged correctly.  Return to the crime scene to process more evidence, or finish up.");
         this.response.addColor('#009900',0);
     },
@@ -89,7 +81,7 @@ BasicGame.glassLevel.prototype = {
     },
     collectItem: function () {   
       option4.sprite = this.add.sprite(this.world.centerX, this.world.centerY+150,'incorrect');
-      this.response.setText("You could collect this item, but this glass is a nonporous item that is clear.  Try something else before you lug it back to the crime lab.");
+      this.response.setText("A door handle is really difficult to remove from the crime scene.  The handle is nonporous with a solid, light background, so maybe you could try something else.");
       this.response.addColor('#B00000',0);
     },
 
