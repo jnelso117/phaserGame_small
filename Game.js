@@ -24,12 +24,12 @@ BasicGame.Game = function (game) {
     this.BG;
     //Items are named from left to right and top to bottom.  
     //Items 1-3 are the top items and 4-6 are the bottom.
-    this.item1;
-    this.item2;
-    this.item3;
-    this.item4;
-    this.item5;
-    this.item6;
+    this.drinkingGlass;
+    this.doorHandle;
+    this.gun;
+    this.newspaper;
+    this.paperDoc;
+    this.sodaCan;
     this.text = '';
 
 };
@@ -38,18 +38,26 @@ BasicGame.Game.prototype = {
 
 	create: function () {
         this.BG = this.add.image(0,0,'sky');
-        this.item1 = this.add.image(0,0, 'diamond');
-        this.item2 = this.add.image(this.world.centerX, 0, 'firstaid');
-        this.item3 = this.add.image(this.world.centerX+300, 0, 'star');
-        this.item4 = this.add.image(0,570, 'diamond');
-        this.item5 = this.add.image(this.world.centerX, 570, 'firstaid');
-        this.item6 = this.add.image(this.world.centerX+300,570, 'diamond');
-        this.item1.inputEnabled = true;
-        this.item2.inputEnabled = true;
-        this.item3.inputEnabled = true;
-        this.item1.events.onInputDown.add(this.startGlassLevel,this);
-        this.item2.events.onInputDown.add(this.startKnobLevel, this);
-        this.item3.events.onInputDown.add(this.startWeaponLevel, this);
+        this.drinkingGlass = this.add.image(0,0, 'diamond');
+        this.doorHandle = this.add.image(this.world.centerX, 0, 'firstaid');
+        this.gun = this.add.image(this.world.centerX+300, 0, 'star');
+        this.newspaper = this.add.image(0,570, 'diamond');
+        this.paperDoc = this.add.image(this.world.centerX, 570, 'firstaid');
+        this.sodaCan = this.add.image(this.world.centerX+300,570, 'diamond');
+        // Enable Input for the images
+        this.drinkingGlass.inputEnabled = true;
+        this.doorHandle.inputEnabled = true;
+        this.gun.inputEnabled = true;
+        this.newspaper.inputEnabled = true;
+        this.paperDoc.inputEnabled = true;
+        this.sodaCan.inputEnabled = true;
+        // On input, run the function listed in the parameter
+        this.drinkingGlass.events.onInputDown.add(this.startGlassLevel,this);
+        this.doorHandle.events.onInputDown.add(this.startKnobLevel, this);
+        this.gun.events.onInputDown.add(this.startWeaponLevel, this);
+        this.newspaper.events.onInputDown.add(this.startPaperLevel, this);
+        this.paperDoc.events.onInputDown.add(this.startDocumentLevel, this);
+        this.sodaCan.events.onInputDown.add(this.startCanLevel, this);
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         //this shows how many stages have been completed
          text = this.add.text(0,this.world.centerY, BasicGame.levelCounter, { fill: '#fffff' });
@@ -83,22 +91,48 @@ BasicGame.Game.prototype = {
         function usually.  
         
         ********************************************/
+         if (BasicGame.levelCounter === 6) //checks to see if the levels were cleared
+        {
+            this.startIntermission();
+        }
         
          if (BasicGame.glassLevelComplete === false) 
          { 
-            this.item1.inputEnabled = false; //user can no longer access stage
-            this.item1 = this.add.image(0,0, 'diamondComplete'); //replace graphic
+            this.drinkingGlass.inputEnabled = false; //user can no longer access stage
+            this.drinkingGlass.destroy(); 
+            this.drinkingGlass = this.add.image(0,0, 'diamondComplete'); //replace graphic
         }
         if (BasicGame.knobLevelComplete === false) 
         {
-             this.item2.inputEnabled = false; //user can no longer access stage
-            this.item2 = this.add.image(this.world.centerX, 0, 'firstaidComplete'); //replace graphic
+            this.doorHandle.inputEnabled = false; //user can no longer access stage
+            this.doorHandle.destroy();
+            this.doorHandle = this.add.image(this.world.centerX, 0, 'firstaidComplete'); //replace graphic
         }
-        if (BasicGame.levelCounter === 2) //checks to see if the levels were cleared
+        if (BasicGame.weaponLevelComplete === false)
         {
-            this.state.start('gameOver');
+            this.gun.inputEnabled  = false;
+            this.gun.destroy();
+            this.gun = this.add.image(this.world.centerX+300, 0, 'firstaidComplete');
         }
-        
+        if (BasicGame.paperLevelComplete === false)
+        {
+            this.newspaper.inputEnabled = false;
+            this.newspaper.destroy();
+            this.newspaper = this.add.image(0,570, 'diamondComplete');
+        }
+        if (BasicGame.documentLevelComplete === false)
+        {
+            this.paperDoc.inputEnabled = false;
+            this.paperDoc.destroy();
+            this.paperDoc = this.add.image(this.world.centerX, 570, 'firstaidComplete');
+        }
+        if (BasicGame.canLevelComplete === false)
+        {
+            this.sodaCan.inputEnabled = false;
+            this.sodaCan.destroy();
+            this.sodaCan = this.add.image(this.world.centerX+300,570, 'diamondComplete');
+        }
+       
 
 	},
 
@@ -125,6 +159,19 @@ BasicGame.Game.prototype = {
 	    //	Then let's go to the next state.
         this.state.start('weaponLevel');
 
+},
+    startPaperLevel: function (pointer) {
+        this.state.start('paperLevel');
+        
+},
+    startDocumentLevel: function (pointer) {
+        this.state.start('documentLevel');
+},
+    startCanLevel: function (pointer) {
+        this.state.start('canLevel');
+},
+    startIntermission: function(pointer) {
+        this.state.start('intermission');
 },
     
 }

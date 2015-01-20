@@ -1,11 +1,12 @@
  /******************************************************************
     
-    This Level covers Slides 14 through 17.  
+    This Level covers Slides 18 through 21.  
     
-    Item: Gun/Knife/Hammer, as long as it's a kill weapon
-    Details: Dark background, removable, non-porous item.  
-    Fingerprints? Yes.
+    Item: Can
+    Details: Complex Background, removable, non-porous item.  
+    Fingerprints? No.
     Collect? Yes.
+    Fume? At lab.
     
  ******************************************************************/
     
@@ -56,16 +57,8 @@ BasicGame.canLevel.prototype = {
     },
     
     usePowder: function () {
-        BasicGame.levelCounter++;
-        //  This will stop the user from visiting the other options
-        //  Also, it will stop them from clicking option 1 and incrementing the levelCounter by an infinite amount
-        option1.inputEnabled = false;
-        option2.inputEnabled = false;
-        option3.inputEnabled = false;
-        option4.inputEnabled = false;
-        BasicGame.canLevelComplete = false;
-        this.response.setText("A brush and black powder is good for processing nonporous items, but the weapon has a very dark background that would not provide good contrast with the powder.  Try something else.");
-        this.response.addColor('#009900',0);
+        this.response.setText("A brush and black powder is good for processing nonporous items, but this soda can has a complex background that would not provide good contrast.  Try something else.");
+        this.response.addColor('#B00000',0);
     },
     useSuperGlue: function () {
        option2.sprite = this.add.sprite(this.world.centerX, this.world.centerY+50,'incorrect');
@@ -80,9 +73,17 @@ BasicGame.canLevel.prototype = {
         
     },
     collectItem: function () {   
-      option4.sprite = this.add.sprite(this.world.centerX, this.world.centerY+150,'incorrect');
-      this.response.setText("Good idea!  The gun can be removed from the crime scene and this nonporous item with a dark background can more easily be processed back at the lab.");
-      this.response.addColor('#B00000',0);
+     //  This will stop the user from visiting the other options
+    //  Also, it will stop them from clicking option 1 and incrementing the levelCounter by an infinite amount
+    option1.inputEnabled = false;
+    option2.inputEnabled = false;
+    option3.inputEnabled = false;
+    option4.inputEnabled = false;
+    BasicGame.canLevelComplete = false;
+    BasicGame.levelCounter++;
+    option4.sprite = this.add.sprite(this.world.centerX, this.world.centerY+150,'incorrect');
+    this.response.setText("Good idea!  The gun can be removed from the crime scene and this nonporous item with a dark background can more easily be processed back at the lab.");
+    this.response.addColor('#009900',0);
     },
 
 

@@ -15,6 +15,7 @@
     <script src="paperLevel.js"></script>
     <script src="documentLevel.js"></script>
     <script src="gameOver.js"></script>
+    <script src="Intermission.js"></script>
     <style>
         body {
             margin: 0;
@@ -26,7 +27,7 @@
 <div id="gameContainer"></div>
 <script type="text/javascript">
 window.onload = function() {
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameContainer');
+var game = new Phaser.Game(1600, 900, Phaser.AUTO, 'gameContainer');
     game.state.add('Boot', BasicGame.Boot);
     game.state.add('Preloader', BasicGame.Preloader); //Responsible for Assets preparation
     game.state.add('Menu', BasicGame.Menu);
@@ -38,6 +39,7 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameContainer');
     game.state.add('paperLevel', BasicGame.paperLevel);
     game.state.add('documentLevel', BasicGame.documentLevel);
     game.state.add('gameOver', BasicGame.gameOver);
+    game.state.add('intermission',BasicGame.Intermission);
     game.state.start('Boot');
     
 }
