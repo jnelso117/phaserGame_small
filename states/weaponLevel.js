@@ -55,8 +55,8 @@ BasicGame.weaponLevel.prototype = {
     },
     
     usePowder: function () {
-
-    this.response.setText("A brush and black powder is good for processing nonporous items, but the weapon has a very dark background that would not provide good contrast with the powder.  Try something else.");
+    option2.sprite = this.add.sprite(this.world.centerX, this.world.centerY,'incorrect');
+    this.response.setText("A brush and black powder is good for processing nonporous items, but the weapon has a very dark background that would not provide good contrast with the powder.     Try something else.");
     this.response.addColor('#B00000',0);
     },
     useSuperGlue: function () {
@@ -80,7 +80,6 @@ BasicGame.weaponLevel.prototype = {
     option3.inputEnabled = false;
     option4.inputEnabled = false;
     BasicGame.weaponLevelComplete = false;    
-    option4.sprite = this.add.sprite(this.world.centerX, this.world.centerY+150,'incorrect');
     this.response.setText("Good idea!  The gun can be removed from the crime scene and this nonporous item with a dark background can more easily be processed back at the lab.");
     this.response.addColor('#009900',0);
     },

@@ -64,6 +64,7 @@ BasicGame.knobLevel.prototype = {
         option3.inputEnabled = false;
         option4.inputEnabled = false;
         BasicGame.knobLevelComplete = false;
+        option1.sprite = this.add.sprite(this.world.centerX, this.world.centerY,'star');
         this.response.setText("A brush and black powder is ideal for processing a clear, nonporous piece of evidence at the scene.  Using the powder, you reveal a fingerprint!  You photograph and collect the print using a tape lift.  All items are packaged correctly.  Return to the crime scene to process more evidence, or finish up.");
         this.response.addColor('#009900',0);
     },
