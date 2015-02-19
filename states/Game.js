@@ -37,13 +37,13 @@ BasicGame.Game = function (game) {
 BasicGame.Game.prototype = {
 
 	create: function () {
-        this.BG = this.add.image(0,0,'sky');
-        this.drinkingGlass = this.add.image(0,0, 'diamond');
-        this.doorHandle = this.add.image(this.world.centerX, 0, 'firstaid');
-        this.gun = this.add.image(this.world.centerX+300, 0, 'star');
-        this.newspaper = this.add.image(0,570, 'diamond');
+        this.BG = this.add.image(0,0,'crimeScene');
+        this.drinkingGlass = this.add.image(0,0, 'Glass');
+        this.doorHandle = this.add.image(this.world.centerX, 0, 'Knob');
+        this.gun = this.add.image(this.world.centerX+300, 0, 'Gun');
+        this.newspaper = this.add.image(0,570, 'Newspaper');
         this.paperDoc = this.add.image(this.world.centerX, 570, 'firstaid');
-        this.sodaCan = this.add.image(this.world.centerX+300,570, 'diamond');
+        this.sodaCan = this.add.image(this.world.centerX+300,570, 'Can');
         // Enable Input for the images
         this.drinkingGlass.inputEnabled = true;
         this.doorHandle.inputEnabled = true;

@@ -20,9 +20,9 @@ BasicGame.paperLevel.prototype = {
    create: function () {
         //adding the images to the canvas
         background = this.add.image(0,0, 'sky');
-        image = this.add.sprite(this.world.centerX/2,this.world.centerY/2,'firstaid');
+        image = this.add.sprite(this.world.centerX/2,this.world.centerY/2,'Newspaper');
         option1 = this.add.sprite(this.world.centerX, this.world.centerY, 'star');
-        option2 = this.add.sprite(this.world.centerX, this.world.centerY+50, 'star');
+        option2 = this.add.sprite(this.world.centerX-50, this.world.centerY+50, 'star');
         option3 = this.add.sprite(this.world.centerX, this.world.centerY+100, 'star');
         option4 = this.add.sprite(this.world.centerX, this.world.centerY+150, 'star');
         returnStar = this.add.image(0,0, 'star');

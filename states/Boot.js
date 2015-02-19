@@ -26,7 +26,8 @@ BasicGame.Boot = function (game) {
 
 BasicGame.Boot.prototype = {
     preload : function () {
-        //Rebudant code. Dunno why Lynda initialized here. Put this in                     Preloader.js
+//        Rebudant code. Dunno why Lynda initialized here. Put this in        
+//        Preloader.js
 //        this.load.image('sky', 'assets/sky.png');
 //        this.load.image('firstaid', 'assets/firstaid.png');
 //        this.load.image('diamond', 'assets/diamond.png');
