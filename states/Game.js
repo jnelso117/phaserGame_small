@@ -38,25 +38,25 @@ BasicGame.Game.prototype = {
 
 	create: function () {
         this.BG = this.add.image(0,0,'crimeScene');
-        this.drinkingGlass = this.add.image(0,0, 'Glass');
-        this.doorHandle = this.add.image(this.world.centerX, 0, 'Knob');
-        this.gun = this.add.image(this.world.centerX+300, 0, 'Gun');
-        this.newspaper = this.add.image(0,570, 'Newspaper');
-        this.paperDoc = this.add.image(this.world.centerX, 570, 'firstaid');
-        this.sodaCan = this.add.image(this.world.centerX+300,570, 'Can');
+        this.drinkingGlass = this.add.image(629,604, 'Table_Glass');
+        this.doorHandle = this.add.image(504,432, 'Door_Knob');
+        this.gun = this.add.image(574, 844, 'Table_Gun');
+        this.newspaper = this.add.image(512,632, 'Table_Newspaper');
+        //this.paperDoc = this.add.image(this.world.centerX, 570, 'firstaid');
+        this.sodaCan = this.add.image(689.5,629, 'Table_Can');
         // Enable Input for the images
         this.drinkingGlass.inputEnabled = true;
         this.doorHandle.inputEnabled = true;
         this.gun.inputEnabled = true;
         this.newspaper.inputEnabled = true;
-        this.paperDoc.inputEnabled = true;
+        //this.paperDoc.inputEnabled = true;
         this.sodaCan.inputEnabled = true;
         // On input, run the function listed in the parameter
         this.drinkingGlass.events.onInputDown.add(this.startGlassLevel,this);
         this.doorHandle.events.onInputDown.add(this.startKnobLevel, this);
         this.gun.events.onInputDown.add(this.startWeaponLevel, this);
         this.newspaper.events.onInputDown.add(this.startPaperLevel, this);
-        this.paperDoc.events.onInputDown.add(this.startDocumentLevel, this);
+        //this.paperDoc.events.onInputDown.add(this.startDocumentLevel, this);
         this.sodaCan.events.onInputDown.add(this.startCanLevel, this);
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         //this shows how many stages have been completed

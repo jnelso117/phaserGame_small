@@ -7,7 +7,7 @@ BasicGame.gameOver = function(game) {
 BasicGame.gameOver.prototype = {
     
     create: function () {
-        background = this.add.image(0,0, 'gameOver');
+        background = this.add.image(0,0, 'crimeScene');
         image = this.add.sprite(this.world.centerX,this.world.centerY,'diamond');
         returnStar = this.add.image(0,0, 'star');
         returnStar.inputEnabled = true;

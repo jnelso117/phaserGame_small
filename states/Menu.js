@@ -12,7 +12,7 @@ BasicGame.Menu.prototype = {
         //this is where all your assets need to be called to be in the main menu
         startBG = this.add.image(0,0, 'crimeScene');
         startStar = this.add.image(this.world.centerX,this.world.centerY-80, 'star');        
-        this.text = this.add.text(this.world.centerX,this.world.centerY, '', { fill: '#fffff' });
+        this.text = this.add.text(this.world.centerX,this.world.centerY, '', { font: '24px fjalla', fill: '#fffff' });
         this.timer = this.time.events.add(Phaser.Timer.SECOND * 3, this.enableClick, this);
         
     },

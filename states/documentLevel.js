@@ -19,7 +19,7 @@ BasicGame.documentLevel.prototype = {
     
    create: function () {
         //adding the images to the canvas
-        background = this.add.image(0,0, 'sky');
+        background = this.add.image(0,0, 'crimeScene');
         image = this.add.sprite(this.world.centerX/2,this.world.centerY/2,'firstaid');
         option1 = this.add.sprite(this.world.centerX, this.world.centerY, 'star');
         option2 = this.add.sprite(this.world.centerX, this.world.centerY+50, 'star');
