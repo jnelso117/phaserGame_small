@@ -7,6 +7,8 @@ BasicGame.Intermission = function(game) {
 BasicGame.Intermission.prototype = {
     
 create: function() {
+    this.background = this.add.sprite(0,0, 'crimeSceneFull');
+    this.text = this.add.text(0,this.world.centerY+300, 'So far so good! Unfortunately, The Lab Scene hasn\'t been implemented yet, come back next week!', { font: '24px fjalla', wordWrap: true, wordWrapWidth: 500,fill: '#fffff' });
    
     
 },

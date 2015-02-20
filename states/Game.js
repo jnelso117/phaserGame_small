@@ -91,7 +91,7 @@ BasicGame.Game.prototype = {
         function usually.  
         
         ********************************************/
-         if (BasicGame.levelCounter === 6) //checks to see if the levels were cleared
+         if (BasicGame.levelCounter === 5) //checks to see if the levels were cleared
         {
             this.startIntermission();
         }
@@ -100,37 +100,31 @@ BasicGame.Game.prototype = {
          { 
             this.drinkingGlass.inputEnabled = false; //user can no longer access stage
             this.drinkingGlass.destroy(); 
-            this.drinkingGlass = this.add.image(0,0, 'diamondComplete'); //replace graphic
         }
         if (BasicGame.knobLevelComplete === false) 
         {
             this.doorHandle.inputEnabled = false; //user can no longer access stage
             this.doorHandle.destroy();
-            this.doorHandle = this.add.image(this.world.centerX, 0, 'firstaidComplete'); //replace graphic
         }
         if (BasicGame.weaponLevelComplete === false)
         {
             this.gun.inputEnabled  = false;
             this.gun.destroy();
-            this.gun = this.add.image(this.world.centerX+300, 0, 'firstaidComplete');
         }
         if (BasicGame.paperLevelComplete === false)
         {
             this.newspaper.inputEnabled = false;
             this.newspaper.destroy();
-            this.newspaper = this.add.image(0,570, 'diamondComplete');
         }
         if (BasicGame.documentLevelComplete === false)
         {
             this.paperDoc.inputEnabled = false;
             this.paperDoc.destroy();
-            this.paperDoc = this.add.image(this.world.centerX, 570, 'firstaidComplete');
         }
         if (BasicGame.canLevelComplete === false)
         {
             this.sodaCan.inputEnabled = false;
             this.sodaCan.destroy();
-            this.sodaCan = this.add.image(this.world.centerX+300,570, 'diamondComplete');
         }
        
 

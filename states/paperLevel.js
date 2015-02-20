@@ -44,7 +44,7 @@ BasicGame.paperLevel.prototype = {
 
         
         //How the text will look
-        this.response = this.add.text(this.world.centerX,this.world.centerY-75, '', { font: "12px fjalla", wordWrap: true, wordWrapWidth: 200, fill: '#fffff' });
+        this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, fill: '#fffff' });
         
     },
     update: function () {
@@ -56,26 +56,27 @@ BasicGame.paperLevel.prototype = {
     },
     
     usePowder: function () {
-    powder.sprite = this.add.sprite(this.world.centerX, this.world.centerY, 'incorrect');    
+    powder.loadTexture('Incorrect_Powder');   
     this.response.setText("A brush and black powder is good for processing nonporous items, but the weapon has a very dark background that would not provide good contrast with the powder.     Try something else.");
     this.response.addColor('#B00000',0);
     },
     useSuperGlue: function () {
-    glue.sprite = this.add.sprite(this.world.centerX, this.world.centerY+50,'incorrect');
+    glue.loadTexture('Incorrect_Superglue');
     this.response.setText("Super glue works best on nonporous items.  Besides, you are not able to fume an item at the crime scene.  Try something else.");
     this.response.addColor('#B00000',0);
     },
     
     useNinhydrin: function () {
-    ninhydrin.sprite = this.add.sprite(this.world.centerX, this.world.centerY+100,'incorrect');
+    ninhydrin.loadTexture('Incorrect_Ninhydrin');
     this.response.setText("Ninhydrin does work best on porous items, but ninhydrin is difficult to apply to items at the scene.  Try something else.");
     this.response.addColor('#B00000',0);
         
     },
     collectItem: function () { 
-    BasicGame.levelCounter++;
     //  This will stop the user from visiting the other options
     //  Also, it will stop them from clicking option 1 and incrementing the levelCounter by an infinite amount
+    collect.loadTexture('Correct_Collect');
+    BasicGame.levelCounter++;
     powder.inputEnabled = false;
     glue.inputEnabled = false;
     ninhydrin.inputEnabled = false;

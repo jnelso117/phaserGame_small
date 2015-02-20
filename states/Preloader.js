@@ -11,13 +11,14 @@ BasicGame.Preloader.prototype = {
     
     preload: function() {
     this.load.image('star','assets/star.png');
+    this.load.image('crimeScene', 'assets/Crime_Scene/Crime_Background.png');
+    this.load.image('crimeSceneFull', 'assets/crimeScene_FULL.png');
     //Items that are analyzed
     this.load.image('Can', 'assets/Can.png');
     this.load.image('Gun', 'assets/Gun.png');
     this.load.image('Newspaper','assets/Newspaper.png');
     this.load.image('Glass', 'assets/Glass.png');
     this.load.image('Knob', 'assets/Knob.png');
-    this.load.image('crimeScene', 'assets/Crime_Scene/Crime_Background.png');
     //Items that the player must locate in the canvas
     this.load.image('Table_Can', 'assets/Items/table_can.png');
     this.load.image('Table_Gun', 'assets/Items/table_gun.png');

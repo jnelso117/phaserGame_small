@@ -44,7 +44,7 @@ BasicGame.knobLevel.prototype = {
 
         
         //How the text will look
-        this.response = this.add.text(this.world.centerX,this.world.centerY-75, '', { font: "12px fjalla", wordWrap: true, wordWrapWidth: 200, fill: '#fffff' });
+        this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, fill: '#fffff' });
         
     },
     update: function () {
@@ -56,33 +56,33 @@ BasicGame.knobLevel.prototype = {
     },
     
     usePowder: function () {
-        BasicGame.levelCounter++;
         //  This will stop the user from visiting the other options
         //  Also, it will stop them from clicking option 1 and incrementing the levelCounter by an infinite amount
+        BasicGame.levelCounter++;
+        powder.loadTexture('Correct_Powder');
         powder.inputEnabled = false;
         glue.inputEnabled = false;
         ninhydrin.inputEnabled = false;
         collect.inputEnabled = false;
         BasicGame.knobLevelComplete = false;
-        powder.sprite = this.add.sprite(this.world.centerX, this.world.centerY,'star');
-        this.response.setText("A brush and black powder is ideal for processing a clear, nonporous piece of evidence at the scene.  Using the powder, you reveal a fingerprint!  You photograph and collect the print using a tape lift.  All items are packaged correctly.  Return to the crime scene to process more evidence, or finish up.");
+        this.response.setText("A brush and black powder is ideal for processing a clear, nonporous piece of evidence at the scene.  Using the powder, you reveal a fingerprint!  You                 photograph and collect the print using a tape lift.  All items are packaged correctly.  Return to the crime scene to process more evidence, or finish up.");
         this.response.addColor('#009900',0);
     },
     useSuperGlue: function () {
-       glue.sprite = this.add.sprite(this.world.centerX, this.world.centerY+50,'incorrect');
+       glue.loadTexture('Incorrect_Superglue');
        this.response.setText("You are unable to fume with superglue at the crime scene. Try something else.");
        this.response.addColor('#B00000',0);
     },
     
     useNinhydrin: function () {
-      ninhydrin.sprite = this.add.sprite(this.world.centerX, this.world.centerY+100,'incorrect');
+      ninhydrin.loadTexture('Incorrect_Ninhydrin');
       this.response.setText("Ninhydrin works best on porous items.  Besides, you would not be able to apply ninhydrin to an item at the crime scene.  Try something else.");
       this.response.addColor('#B00000',0);
         
     },
     collectItem: function () {   
-      collect.sprite = this.add.sprite(this.world.centerX, this.world.centerY+150,'incorrect');
-      this.response.setText("A door handle is really difficult to remove from the crime scene.  The handle is nonporous with a solid, light background, so maybe you could try something else.");
+      collect.loadTexture('Incorrect_Collect');
+      this.response.setText("A door handle is really difficult to remove from the crime scene.  The handle is nonporous with a solid, light background, so maybe you could try something           else.");
       this.response.addColor('#B00000',0);
     },
 
