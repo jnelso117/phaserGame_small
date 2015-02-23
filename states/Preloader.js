@@ -12,7 +12,7 @@ BasicGame.Preloader.prototype = {
     preload: function() {
     this.load.image('star','assets/star.png');
     this.load.image('crimeScene', 'assets/Crime_Scene/Crime_Background.png');
-    this.load.image('crimeSceneFull', 'assets/crimeScene_FULL.png');
+    this.load.image('crimeSceneFull', 'assets/linvilleCrimeSceneFinal-Crime.png');
     //Items that are analyzed
     this.load.image('Can', 'assets/Can.png');
     this.load.image('Gun', 'assets/Gun.png');
