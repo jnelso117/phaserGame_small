@@ -51,7 +51,7 @@ BasicGame.weaponLevel.prototype = {
        
     },
    returnToMenu: function (pointer) {
-    this.state.start('Game');   
+    this.state.start('crimeSceneMain');   
     },
     
     usePowder: function () {
@@ -80,7 +80,7 @@ BasicGame.weaponLevel.prototype = {
     glue.inputEnabled = false;
     ninhydrin.inputEnabled = false;
     collect.inputEnabled = false;
-    BasicGame.weaponLevelComplete = false;    
+    BasicGame.weaponLevelComplete = true;    
     this.response.setText("Good idea!  The gun can be removed from the crime scene and this nonporous item with a dark background can more easily be processed back at the lab.");
     this.response.addColor('#009900',0);
     },

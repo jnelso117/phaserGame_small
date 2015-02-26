@@ -51,7 +51,7 @@ BasicGame.documentLevel.prototype = {
        
     },
    returnToMenu: function (pointer) {
-         this.state.start('Game');   
+         this.state.start('crimeSceneMain');   
     },
     
     usePowder: function () {  

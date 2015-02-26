@@ -1,27 +1,26 @@
  /******************************************************************
     
-    This Level covers Slides 18 through 21.  
+    This Level covers Slides 22 through 25.  
     
-    Item: Can
-    Details: Complex Background, removable, non-porous item.  
+    Item: Newspaper.
+    Details: Porous item.
     Fingerprints? No.
     Collect? Yes.
-    Fume? At lab.
     
  ******************************************************************/
     
-BasicGame.canLevel = function(game) {
+BasicGame.paperLevel = function(game) {
  this.background;
  this.image; //image for the level
  this.returnStar; //return to the Menu
  
 };
-BasicGame.canLevel.prototype = {
+BasicGame.paperLevel.prototype = {
     
    create: function () {
         //adding the images to the canvas
         background = this.add.image(0,0, 'crimeScene');
-        image = this.add.sprite(this.world.centerX/2,this.world.centerY/2,'Can');
+        image = this.add.sprite(this.world.centerX/2,this.world.centerY/2,'Newspaper');
         powder = this.add.sprite(this.world.centerX, this.world.centerY-400, 'Use_Powder');
         glue = this.add.sprite(this.world.centerX, this.world.centerY-200, 'Use_Superglue');
         ninhydrin = this.add.sprite(this.world.centerX, this.world.centerY, 'Use_Ninhydrin');
@@ -45,7 +44,7 @@ BasicGame.canLevel.prototype = {
 
         
         //How the text will look
-        this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px Arial", wordWrap: true, wordWrapWidth: 500, fill: '#fffff' });
+        this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, fill: '#fffff' });
         
     },
     update: function () {
@@ -53,37 +52,37 @@ BasicGame.canLevel.prototype = {
        
     },
    returnToMenu: function (pointer) {
-         this.state.start('Game');   
+    this.state.start('crimeSceneMain');   
     },
     
     usePowder: function () {
-        powder.loadTexture('Incorrect_Powder');
-        this.response.setText("A brush and black powder is good for processing nonporous items, but this soda can has a complex background that would not provide good contrast.  Try something else.");
-        this.response.addColor('#B00000',0);
+    powder.loadTexture('Incorrect_Powder');   
+    this.response.setText("A brush and black powder is good for processing nonporous items, but the weapon has a very dark background that would not provide good contrast with the powder.     Try something else.");
+    this.response.addColor('#B00000',0);
     },
     useSuperGlue: function () {
-       glue.loadTexture('Incorrect_Superglue');
-       this.response.setText("You are unable to fume with superglue at the crime scene. Try something else.");
-       this.response.addColor('#B00000',0);
+    glue.loadTexture('Incorrect_Superglue');
+    this.response.setText("Super glue works best on nonporous items.  Besides, you are not able to fume an item at the crime scene.  Try something else.");
+    this.response.addColor('#B00000',0);
     },
     
     useNinhydrin: function () {
-      ninhydrin.loadTexture('Incorrect_Ninhydrin');
-      this.response.setText("Ninhydrin works best on porous items.  Besides, you would not be able to apply ninhydrin to an item at the crime scene.  Try something else.");
-      this.response.addColor('#B00000',0);
+    ninhydrin.loadTexture('Incorrect_Ninhydrin');
+    this.response.setText("Ninhydrin does work best on porous items, but ninhydrin is difficult to apply to items at the scene.  Try something else.");
+    this.response.addColor('#B00000',0);
         
     },
-    collectItem: function () {   
-     //  This will stop the user from visiting the other options
+    collectItem: function () { 
+    //  This will stop the user from visiting the other options
     //  Also, it will stop them from clicking option 1 and incrementing the levelCounter by an infinite amount
-    BasicGame.levelCounter++;
     collect.loadTexture('Correct_Collect');
+    BasicGame.levelCounter++;
     powder.inputEnabled = false;
     glue.inputEnabled = false;
     ninhydrin.inputEnabled = false;
     collect.inputEnabled = false;
-    BasicGame.canLevelComplete = false;
-    this.response.setText("Good idea!  The gun can be removed from the crime scene and this nonporous item with a dark background can more easily be processed back at the lab.");
+    BasicGame.paperLevelComplete = true;
+    this.response.setText("Good idea!  The newspaper can be removed from the crime scene and this porous item can more easily be processed back at the lab.");
     this.response.addColor('#009900',0);
     },
 

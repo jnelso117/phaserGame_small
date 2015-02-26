@@ -1,4 +1,4 @@
-BasicGame.Game = function (game) {
+BasicGame.crimeSceneMain = function (game) {
 
 	//	When a State is added to Phaser it automatically has the following properties set on it, even if they already exist:
 
@@ -34,15 +34,15 @@ BasicGame.Game = function (game) {
 
 };
 
-BasicGame.Game.prototype = {
+BasicGame.crimeSceneMain.prototype = {
 
 	create: function () {
         this.BG = this.add.image(0,0,'crimeScene');
-        this.drinkingGlass = this.add.image(629,604, 'Table_Glass');
+        this.drinkingGlass = this.add.image(629,650, 'Table_Glass');
         this.doorHandle = this.add.image(446,302, 'Door_Knob');
         this.gun = this.add.image(574, 844, 'Table_Gun');
         this.newspaper = this.add.image(855,446, 'Table_Newspaper');
-        this.paperDoc = this.add.image(this.world.centerX, 570, 'firstaid');
+        this.paperDoc = this.add.image(this.world.centerX, 570, 'star');
         this.sodaCan = this.add.image(689.5,629, 'Table_Can');
         // Enable Input for the images
         this.drinkingGlass.inputEnabled = true;
@@ -91,37 +91,37 @@ BasicGame.Game.prototype = {
         function usually.  
         
         ********************************************/
-         if (BasicGame.levelCounter === 5) //checks to see if the levels were cleared
+         if (BasicGame.levelCounter === 4) //checks to see if the levels were cleared
         {
             this.startIntermission();
         }
         
-         if (BasicGame.glassLevelComplete === false) 
+         if (BasicGame.glassLevelComplete === true) 
          { 
             this.drinkingGlass.inputEnabled = false; //user can no longer access stage
             this.drinkingGlass.destroy(); 
         }
-        if (BasicGame.knobLevelComplete === false) 
+        if (BasicGame.knobLevelComplete === true) 
         {
             this.doorHandle.inputEnabled = false; //user can no longer access stage
             this.doorHandle.destroy();
         }
-        if (BasicGame.weaponLevelComplete === false)
+        if (BasicGame.weaponLevelComplete === true)
         {
             this.gun.inputEnabled  = false;
             this.gun.destroy();
         }
-        if (BasicGame.paperLevelComplete === false)
+        if (BasicGame.paperLevelComplete === true)
         {
             this.newspaper.inputEnabled = false;
             this.newspaper.destroy();
         }
-        if (BasicGame.documentLevelComplete === false)
+        if (BasicGame.documentLevelComplete === true)
         {
             this.paperDoc.inputEnabled = false;
             this.paperDoc.destroy();
         }
-        if (BasicGame.canLevelComplete === false)
+        if (BasicGame.canLevelComplete === true)
         {
             this.sodaCan.inputEnabled = false;
             this.sodaCan.destroy();

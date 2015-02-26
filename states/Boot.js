@@ -11,22 +11,23 @@ var BasicGame = {
     ************************************************************/
     
     levelCounter: 0,
-    glassLevelComplete: true,
-    knobLevelComplete: true,
-    weaponLevelComplete: true,
-    newspaperLevelComplete: true,
-    documentLevelComplete: true,
-    canLevelComplete: true,
+    glassLevelComplete: false,
+    knobLevelComplete: false,
+    weaponLevelComplete: false,
+    newspaperLevelComplete: false,
+    documentLevelComplete: false,
+    canLevelComplete: false,
 };
 
 
 BasicGame.Boot = function (game) {
      
-    this.game = game},
+    this.game = game
+},
 
 BasicGame.Boot.prototype = {
     preload : function () {
-//        Rebudant code. Dunno why Lynda initialized here. Put this in        
+//        Redudant code. Dunno why Lynda initialized here. Put this in        
 //        Preloader.js
 //        this.load.image('sky', 'assets/sky.png');
 //        this.load.image('firstaid', 'assets/firstaid.png');
@@ -37,8 +38,8 @@ BasicGame.Boot.prototype = {
     this.input.maxPointers = 1;
     this.stage.disableVisibilityChange = true;
     this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-    this.scale.minWidth = 600;
-    this.scale.minHeight = 400;
+    this.scale.minWidth = 800;
+    this.scale.minHeight = 600;
     this.scale.pageAlignHorizontally = true;
     this.scale.pageAlignVertically = true;
     this.stage.forcePortrait = true; //Force landscape in browser

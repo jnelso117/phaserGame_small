@@ -7,13 +7,18 @@
 	<script src="states/Boot.js"></script>
 	<script src="states/Preloader.js"></script>
 	<script src="states/Menu.js"></script>
-	<script src="states/Game.js"></script>
-    <script src="states/glassLevel.js"></script>
-    <script src="states/knobLevel.js"></script>
-    <script src="states/weaponLevel.js"></script>
-    <script src="states/canLevel.js"></script>
-    <script src="states/paperLevel.js"></script>
-    <script src="states/documentLevel.js"></script>
+	<script src="states/CrimeScene/crimeSceneMain.js"></script>
+    <script src="states/CrimeScene/glassLevel.js"></script>
+    <script src="states/CrimeScene/knobLevel.js"></script>
+    <script src="states/CrimeScene/weaponLevel.js"></script>
+    <script src="states/CrimeScene/canLevel.js"></script>
+    <script src="states/CrimeScene/paperLevel.js"></script>
+    <script src="states/CrimeScene/documentLevel.js"></script>
+    <script src="states/Lab/canLab.js"></script>
+    <script src="states/Lab/gunLab.js"></script>
+    <script src="states/Lab/glassLab.js"></script>
+    <script src="states/Lab/paperLab.js"></script>
+    <script src="states/Lab/documentLab.js"></script>
     <script src="states/gameOver.js"></script>
     <script src="states/Intermission.js"></script>
     <style>
@@ -31,7 +36,7 @@ var game = new Phaser.Game(1600, 900, Phaser.AUTO, 'gameContainer');
     game.state.add('Boot', BasicGame.Boot);
     game.state.add('Preloader', BasicGame.Preloader); //Responsible for Assets preparation
     game.state.add('Menu', BasicGame.Menu);
-    game.state.add('Game', BasicGame.Game);
+    game.state.add('crimeSceneMain', BasicGame.crimeSceneMain);
     game.state.add('glassLevel', BasicGame.glassLevel);
     game.state.add('knobLevel', BasicGame.knobLevel);
     game.state.add('weaponLevel', BasicGame.weaponLevel);
@@ -40,7 +45,13 @@ var game = new Phaser.Game(1600, 900, Phaser.AUTO, 'gameContainer');
     game.state.add('documentLevel', BasicGame.documentLevel);
     game.state.add('gameOver', BasicGame.gameOver);
     game.state.add('intermission',BasicGame.Intermission);
+    game.state.add('canLab', BasicGame.canLab);
+    game.state.add('gunLab', BasicGame.gunLab);
+    game.state.add('glassLab', BasicGame.glassLab);
+    game.state.add('paperLab', BasicGame.paperLab);
+    game.state.add('documentLab', BasicGame.documentLab);
     game.state.start('Boot');
+    game.state.add('labSceneMain', BasicGame.labScene);
     
 }
 </script>
