@@ -38,12 +38,13 @@ BasicGame.crimeSceneMain.prototype = {
 
 	create: function () {
         this.BG = this.add.image(0,0,'crimeScene');
-        this.drinkingGlass = this.add.image(629,650, 'Table_Glass');
+        this.BG.tint = 0x9999FF;
+        this.drinkingGlass = this.add.image(629,573, 'Table_Glass');
         this.doorHandle = this.add.image(446,302, 'Door_Knob');
-        this.gun = this.add.image(574, 844, 'Table_Gun');
+        this.gun = this.add.image(604, 830, 'Table_Gun');
         this.newspaper = this.add.image(855,446, 'Table_Newspaper');
-        this.paperDoc = this.add.image(this.world.centerX, 570, 'star');
-        this.sodaCan = this.add.image(689.5,629, 'Table_Can');
+        this.paperDoc = this.add.image(424, 630, 'Table_Card');
+        this.sodaCan = this.add.image(525,561, 'Table_Can');
         // Enable Input for the images
         this.drinkingGlass.inputEnabled = true;
         this.doorHandle.inputEnabled = true;
@@ -91,7 +92,7 @@ BasicGame.crimeSceneMain.prototype = {
         function usually.  
         
         ********************************************/
-         if (BasicGame.levelCounter === 4) //checks to see if the levels were cleared
+         if (BasicGame.levelCounter === 1) //checks to see if the levels were cleared
         {
             this.startIntermission();
         }

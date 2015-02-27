@@ -21,11 +21,17 @@ BasicGame.Preloader.prototype = {
     this.load.image('Glass', 'assets/Glass.png');
     this.load.image('Knob', 'assets/Knob.png');
     //Items that the player must locate in the canvas
-    this.load.image('Table_Can', 'assets/Items/table_can.png');
-    this.load.image('Table_Gun', 'assets/Items/table_gun.png');
-    this.load.image('Table_Newspaper', 'assets/Items/table_newspaper.png');
-    this.load.image('Table_Glass', 'assets/Items/table_glass.png');
-    this.load.image('Door_Knob', 'assets/Items/door_knob.png');
+    this.load.image('Table_Can', 'assets/Crime_Scene/table_can.png');
+    this.load.image('Table_Gun', 'assets/Crime_Scene/table_gun.png');
+    this.load.image('Table_Newspaper', 'assets/Crime_Scene/table_newspaper.png');
+    this.load.image('Table_Glass', 'assets/Crime_Scene/table_glass.png');
+    this.load.image('Table_Card', 'assets/Crime_Scene/table_card.png');
+    this.load.image('Door_Knob', 'assets/Crime_Scene/door_knob.png');
+    this.load.image('Lab_Can', 'assets/Lab/lab_can.png');
+    this.load.image('Lab_Gun', 'assets/Lab/lab_gun.png');
+    this.load.image('Lab_Card', 'assets/Lab/lab_document.png');
+    this.load.image('Lab_Glass', 'assets/Lab/lab_glass.png');
+    this.load.image('Lab_Paper', 'assets/Lab/lab_paper.png');
     // Function Buttons
     this.load.image('Use_Powder', 'assets/buttons/Powder/Initial.png');
     this.load.image('Use_Superglue', 'assets/buttons/Superglue/Initial.png');

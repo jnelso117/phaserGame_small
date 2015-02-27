@@ -19,8 +19,23 @@ BasicGame.paperLevel.prototype = {
     
    create: function () {
         //adding the images to the canvas
-        background = this.add.image(0,0, 'crimeScene');
-        image = this.add.sprite(this.world.centerX/2,this.world.centerY/2,'Newspaper');
+        this.BG = this.add.image(0,0,'crimeScene');
+        this.drinkingGlass = this.add.image(629,573, 'Table_Glass');
+        this.doorKnob = this.add.image(446,302, 'Door_Knob');
+        this.gun = this.add.image(604, 830, 'Table_Gun');
+        this.newspaper = this.add.image(855,446, 'Table_Newspaper');
+        this.paperDoc = this.add.image(424, 630, 'Table_Card');
+        this.sodaCan = this.add.image(525,561, 'Table_Can');
+       
+       //Adding a tint to all other objects to give the game a more focused feel
+        this.BG.tint = 0x9999FF;
+        this.drinkingGlass.tint = 0x9999FF;
+        this.doorKnob.tint = 0x9999FF;
+        this.gun.tint = 0x9999FF;
+        this.sodaCan.tint = 0x9999FF;
+        this.paperDoc.tint = 0x9999FF;
+       
+       
         powder = this.add.sprite(this.world.centerX, this.world.centerY-400, 'Use_Powder');
         glue = this.add.sprite(this.world.centerX, this.world.centerY-200, 'Use_Superglue');
         ninhydrin = this.add.sprite(this.world.centerX, this.world.centerY, 'Use_Ninhydrin');
