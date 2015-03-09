@@ -1,9 +1,4 @@
 BasicGame.Preloader = function(game) {
-   this.sky = null;
-   this.firstaid = null;
-   this.diamond = null;
-   this.ready = false;
-   this.star = null;
 
 };
 
@@ -55,7 +50,6 @@ create: function () {
 },
     
 update: function() {
-    BasicGame.levelCounter = 0;
     this.ready = true;
     this.state.start('Menu');
 }

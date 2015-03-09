@@ -8,21 +8,31 @@ var BasicGame = {
     Pay close attention to the syntax Phaser uses for Global variables.
     
     varName: value,
+    Counters:
+    crimeCounter: keeps up with the User's process in the Crime Scene only.
+    labCounter: keeps up with the User's process in the Lab Scene only.
+    
     ************************************************************/
     
-    levelCounter: 0,
+    crimeCounter: 0,
+    labCounter: 0,
     glassLevelComplete: false,
     knobLevelComplete: false,
     weaponLevelComplete: false,
     newspaperLevelComplete: false,
     documentLevelComplete: false,
     canLevelComplete: false,
+    canLabComplete: false,
+    gunLabComplete: false,
+    newspaperComplete: false,
+    documentLabComplete: false,
+    
 };
 
 
 BasicGame.Boot = function (game) {
      
-    this.game = game
+    this.game = game;
 },
 
 BasicGame.Boot.prototype = {
@@ -42,7 +52,7 @@ BasicGame.Boot.prototype = {
     this.scale.minHeight = 600;
     this.scale.pageAlignHorizontally = true;
     this.scale.pageAlignVertically = true;
-    this.stage.forcePortrait = true; //Force landscape in browser
+    this.stage.forcePortrait = false; //Force landscape in browser
     this.scale.setScreenSize(true);
     
     this.input.addPointer(); //correspond to the 1 pointer

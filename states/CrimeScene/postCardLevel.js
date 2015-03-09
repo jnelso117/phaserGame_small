@@ -2,20 +2,20 @@
     
     This Level covers Slides 26 through 29.  
     
-    Item: Paper document.
+    Item: Paper postCard.
     Details: Porous item.  
     Fingerprints? Yes.
     Collect? Yes.
     
  ******************************************************************/
     
-BasicGame.documentLevel = function(game) {
+BasicGame.postCardLevel = function(game) {
  this.background;
  this.image; //image for the level
  this.returnStar; //return to the Menu
  
 };
-BasicGame.documentLevel.prototype = {
+BasicGame.postCardLevel.prototype = {
     
    create: function () {
         //adding the images to the canvas
@@ -35,10 +35,10 @@ BasicGame.documentLevel.prototype = {
         this.gun.tint = 0x9999FF;
         this.newspaper.tint = 0x9999FF;
         this.sodaCan.tint = 0x9999FF;       
-        powder = this.add.sprite(this.world.centerX, this.world.centerY-400, 'Use_Powder');
-        glue = this.add.sprite(this.world.centerX, this.world.centerY-200, 'Use_Superglue');
-        ninhydrin = this.add.sprite(this.world.centerX, this.world.centerY, 'Use_Ninhydrin');
-        collect = this.add.sprite(this.world.centerX, this.world.centerY+200, 'Use_Collect');
+        powder = this.add.sprite(this.world.centerX+400, this.world.centerY-400, 'Use_Powder');
+        glue = this.add.sprite(this.world.centerX+400, this.world.centerY-200, 'Use_Superglue');
+        ninhydrin = this.add.sprite(this.world.centerX+400, this.world.centerY, 'Use_Ninhydrin');
+        collect = this.add.sprite(this.world.centerX+400, this.world.centerY+200, 'Use_Collect');
         returnStar = this.add.image(0,0, 'star');
         
         //Input enabled for images
@@ -57,10 +57,42 @@ BasicGame.documentLevel.prototype = {
        
         
         //How the text will look
-        this.response = this.add.text(this.world.centerX,this.world.centerY-75, '', { font: "12px Arial", wordWrap: true, wordWrapWidth: 200, fill: '#fffff' });
+        this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 200, fill: '#fffff' });
         
     },
     update: function () {
+
+         if (BasicGame.glassLevelComplete === true) 
+         { 
+            this.drinkingGlass.inputEnabled = false; //user can no longer access stage
+            this.drinkingGlass.destroy(); 
+        }
+        if (BasicGame.knobLevelComplete === true) 
+        {
+            this.doorHandle.inputEnabled = false; //user can no longer access stage
+            this.doorHandle.destroy();
+        }
+        if (BasicGame.weaponLevelComplete === true)
+        {
+            this.gun.inputEnabled  = false;
+            this.gun.destroy();
+        }
+        if (BasicGame.paperLevelComplete === true)
+        {
+            this.newspaper.inputEnabled = false;
+            this.newspaper.destroy();
+        }
+        if (BasicGame.postCardLevelComplete === true)
+        {
+            this.paperDoc.inputEnabled = false;
+            this.paperDoc.destroy();
+        }
+        if (BasicGame.canLevelComplete === true)
+        {
+            this.sodaCan.inputEnabled = false;
+            this.sodaCan.destroy();
+        }
+       
         
        
     },
@@ -88,14 +120,14 @@ BasicGame.documentLevel.prototype = {
     },
     collectItem: function () { 
          //  This will stop the user from visiting the other options
-        //  Also, it will stop them from clicking option 1 and incrementing the levelCounter by an infinite amount
-    BasicGame.levelCounter++;
+        //  Also, it will stop them from clicking option 1 and incrementing the crimeCounter by an infinite amount
+    BasicGame.crimeCounter++;
     collect.loadTexture("Correct_Collect");
     powder.inputEnabled = false;
     glue.inputEnabled = false;
     ninhydrin.inputEnabled = false;
     collect.inputEnabled = false;
-    BasicGame.documentLevelComplete = true;
+    BasicGame.postCardLevelComplete = true;
     this.response.setText("Good idea!  The paper can be removed from the crime scene and this porous item can more easily be processed back at the lab.");
     this.response.addColor('#009900',0);
     },

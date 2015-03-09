@@ -57,11 +57,11 @@ BasicGame.crimeSceneMain.prototype = {
         this.doorHandle.events.onInputDown.add(this.startKnobLevel, this);
         this.gun.events.onInputDown.add(this.startWeaponLevel, this);
         this.newspaper.events.onInputDown.add(this.startPaperLevel, this);
-        this.paperDoc.events.onInputDown.add(this.startDocumentLevel, this);
+        this.paperDoc.events.onInputDown.add(this.startpostCardLevel, this);
         this.sodaCan.events.onInputDown.add(this.startCanLevel, this);
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         //this shows how many stages have been completed
-         text = this.add.text(0,this.world.centerY, BasicGame.levelCounter, { fill: '#fffff' });
+         text = this.add.text(0,this.world.centerY, BasicGame.crimeCounter, { fill: '#fffff' });
         
 
 	},
@@ -79,7 +79,7 @@ BasicGame.crimeSceneMain.prototype = {
         and so on. It's the heart of your game really. Remember, unless drawing graphics by your own, you don't have to code object rendering, 
         Phaser does it for you on the object creation order basis."
         Source:
-        https://github.com/photonstorm/phaser/wiki/Phaser-General-Documentation-:-States
+        https://github.com/photonstorm/phaser/wiki/Phaser-General-postCardation-:-States
         
         The update function is where all the live updates would go once the main items have been created.  
         I'm using this to check if the student/player has completed the states and replacing the click images with red, non-clickable images.
@@ -92,7 +92,7 @@ BasicGame.crimeSceneMain.prototype = {
         function usually.  
         
         ********************************************/
-         if (BasicGame.levelCounter === 1) //checks to see if the levels were cleared
+         if (BasicGame.crimeCounter === 1) //checks to see if the levels were cleared
         {
             this.startIntermission();
         }
@@ -117,7 +117,7 @@ BasicGame.crimeSceneMain.prototype = {
             this.newspaper.inputEnabled = false;
             this.newspaper.destroy();
         }
-        if (BasicGame.documentLevelComplete === true)
+        if (BasicGame.postCardLevelComplete === true)
         {
             this.paperDoc.inputEnabled = false;
             this.paperDoc.destroy();
@@ -159,8 +159,8 @@ BasicGame.crimeSceneMain.prototype = {
         this.state.start('paperLevel');
         
 },
-    startDocumentLevel: function (pointer) {
-        this.state.start('documentLevel');
+    startpostCardLevel: function (pointer) {
+        this.state.start('postCardLevel');
 },
     startCanLevel: function (pointer) {
         this.state.start('canLevel');

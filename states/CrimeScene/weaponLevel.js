@@ -35,10 +35,10 @@ BasicGame.weaponLevel.prototype = {
         this.sodaCan.tint = 0x9999FF;
         this.newspaper.tint = 0x9999FF;
         this.paperDoc.tint = 0x9999FF;
-    powder = this.add.sprite(this.world.centerX, this.world.centerY-400, 'Use_Powder');
-    glue = this.add.sprite(this.world.centerX, this.world.centerY-200, 'Use_Superglue');
-    ninhydrin = this.add.sprite(this.world.centerX, this.world.centerY, 'Use_Ninhydrin');
-    collect = this.add.sprite(this.world.centerX, this.world.centerY+200, 'Use_Collect');
+    powder = this.add.sprite(this.world.centerX+400, this.world.centerY-400, 'Use_Powder');
+    glue = this.add.sprite(this.world.centerX+400, this.world.centerY-200, 'Use_Superglue');
+    ninhydrin = this.add.sprite(this.world.centerX+400, this.world.centerY, 'Use_Ninhydrin');
+    collect = this.add.sprite(this.world.centerX+400, this.world.centerY+200, 'Use_Collect');
     returnStar = this.add.image(0,0, 'star');
         
     //Input enabled for images
@@ -61,6 +61,39 @@ BasicGame.weaponLevel.prototype = {
         
     },
     update: function () {
+
+        
+         if (BasicGame.glassLevelComplete === true) 
+         { 
+            this.drinkingGlass.inputEnabled = false; //user can no longer access stage
+            this.drinkingGlass.destroy(); 
+        }
+        if (BasicGame.knobLevelComplete === true) 
+        {
+            this.doorHandle.inputEnabled = false; //user can no longer access stage
+            this.doorHandle.destroy();
+        }
+        if (BasicGame.weaponLevelComplete === true)
+        {
+            this.gun.inputEnabled  = false;
+            this.gun.destroy();
+        }
+        if (BasicGame.paperLevelComplete === true)
+        {
+            this.newspaper.inputEnabled = false;
+            this.newspaper.destroy();
+        }
+        if (BasicGame.documentLevelComplete === true)
+        {
+            this.paperDoc.inputEnabled = false;
+            this.paperDoc.destroy();
+        }
+        if (BasicGame.canLevelComplete === true)
+        {
+            this.sodaCan.inputEnabled = false;
+            this.sodaCan.destroy();
+        }
+       
         
        
     },
@@ -87,9 +120,9 @@ BasicGame.weaponLevel.prototype = {
     },
     collectItem: function () { 
      //  This will stop the user from visiting the other options
-    //  Also, it will stop them from clicking option 1 and incrementing the levelCounter by an infinite amount
+    //  Also, it will stop them from clicking option 1 and incrementing the crimeCounter by an infinite amount
     collect.loadTexture('Correct_Collect');
-    BasicGame.levelCounter++;
+    BasicGame.crimeCounter++;
     powder.inputEnabled = false;
     glue.inputEnabled = false;
     ninhydrin.inputEnabled = false;
