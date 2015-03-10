@@ -70,8 +70,8 @@ BasicGame.weaponLevel.prototype = {
         }
         if (BasicGame.knobLevelComplete === true) 
         {
-            this.doorHandle.inputEnabled = false; //user can no longer access stage
-            this.doorHandle.destroy();
+            this.doorKnob.inputEnabled = false; //user can no longer access stage
+            this.doorKnob.destroy();
         }
         if (BasicGame.weaponLevelComplete === true)
         {
@@ -83,7 +83,7 @@ BasicGame.weaponLevel.prototype = {
             this.newspaper.inputEnabled = false;
             this.newspaper.destroy();
         }
-        if (BasicGame.documentLevelComplete === true)
+        if (BasicGame.postCardLevelComplete === true)
         {
             this.paperDoc.inputEnabled = false;
             this.paperDoc.destroy();
@@ -104,18 +104,15 @@ BasicGame.weaponLevel.prototype = {
     usePowder: function () {
     powder.loadTexture('Incorrect_Powder');
     this.response.setText("A brush and black powder is good for processing nonporous items, but the weapon has a very dark background that would not provide good contrast with the powder.     Try something else.");
-    this.response.addColor('#B00000',0);
     },
     useSuperGlue: function () {
     glue.loadTexture('Incorrect_Superglue');   
     this.response.setText("You are unable to fume with superglue at the crime scene. Try something else.");
-    this.response.addColor('#B00000',0);
     },
     
     useNinhydrin: function () {
     ninhydrin.loadTexture('Incorrect_Ninhydrin'); 
     this.response.setText("Ninhydrin works best on porous items.  Besides, you would not be able to apply ninhydrin to an item at the crime scene.  Try something else.");
-    this.response.addColor('#B00000',0);
         
     },
     collectItem: function () { 
@@ -129,7 +126,6 @@ BasicGame.weaponLevel.prototype = {
     collect.inputEnabled = false;
     BasicGame.weaponLevelComplete = true;    
     this.response.setText("Good idea!  The gun can be removed from the crime scene and this nonporous item with a dark background can more easily be processed back at the lab.");
-    this.response.addColor('#009900',0);
     },
 
 

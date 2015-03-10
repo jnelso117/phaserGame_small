@@ -85,7 +85,7 @@ BasicGame.canLevel.prototype = {
             this.newspaper.inputEnabled = false;
             this.newspaper.destroy();
         }
-        if (BasicGame.documentLevelComplete === true)
+        if (BasicGame.postCardLevelComplete === true)
         {
             this.paperDoc.inputEnabled = false;
             this.paperDoc.destroy();

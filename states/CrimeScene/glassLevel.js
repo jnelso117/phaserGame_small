@@ -79,8 +79,8 @@ BasicGame.glassLevel.prototype = {
         }
         if (BasicGame.knobLevelComplete === true) 
         {
-            this.doorHandle.inputEnabled = false; //user can no longer access stage
-            this.doorHandle.destroy();
+            this.doorKnob.inputEnabled = false; //user can no longer access stage
+            this.doorKnob.destroy();
         }
         if (BasicGame.weaponLevelComplete === true)
         {
@@ -92,7 +92,7 @@ BasicGame.glassLevel.prototype = {
             this.newspaper.inputEnabled = false;
             this.newspaper.destroy();
         }
-        if (BasicGame.documentLevelComplete === true)
+        if (BasicGame.postCardLevelComplete === true)
         {
             this.paperDoc.inputEnabled = false;
             this.paperDoc.destroy();

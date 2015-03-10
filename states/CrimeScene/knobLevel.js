@@ -83,7 +83,7 @@ BasicGame.knobLevel.prototype = {
             this.newspaper.inputEnabled = false;
             this.newspaper.destroy();
         }
-        if (BasicGame.documentLevelComplete === true)
+        if (BasicGame.postCardLevelComplete === true)
         {
             this.paperDoc.inputEnabled = false;
             this.paperDoc.destroy();
@@ -111,7 +111,7 @@ BasicGame.knobLevel.prototype = {
         ninhydrin.inputEnabled = false;
         collect.inputEnabled = false;
         BasicGame.knobLevelComplete = true;
-        this.response.setText("A brush and black powder is ideal for processing a clear, nonporous piece of evidence at the scene.  Using the powder, you reveal a fingerprint!  You                 photograph and collect the print using a tape lift.  All items are packaged correctly.  Return to the crime scene to process more evidence, or finish up.");
+        this.response.setText("A brush and black powder is ideal for processing a clear, nonporous piece of evidence at the scene.  Using the powder, you reveal a fingerprint!  You photograph and collect the print using a tape lift.  All items are packaged correctly.  Return to the crime scene to process more evidence, or finish up.");
     },
     useSuperGlue: function () {
        glue.loadTexture('Incorrect_Superglue');

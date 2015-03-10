@@ -3,6 +3,7 @@ BasicGame.labScene = function(game) {
     this.gun;
     this.newspaper;
     this.postCard;
+    this.gunPrint;
 };
 
 BasicGame.labScene.prototype = {
@@ -14,6 +15,8 @@ BasicGame.labScene.prototype = {
         this.gun = this.add.sprite(544, 436, 'Lab_Gun');
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
         this.postCard = this.add.sprite(944, 436, 'Lab_Card');
+        this.gunPrint = this.add.sprite(544,-10,'Victoria_Print');
+        this.gunPrint.alpha = 0;
         // On input, run the function listed in the parameter
         this.can.inputEnabled = true;
         this.gun.inputEnabled = true;
@@ -30,8 +33,21 @@ BasicGame.labScene.prototype = {
     
     update: function () {
         
-        if(BasicGame.labCounter === 6) {
+        if(BasicGame.labCounter === 4) {
             this.state.start('MatchPrints');
+        }
+        if(BasicGame.gunLabComplete === true){
+            this.gunPrint.alpha = 1;
+            this.gun.destroy();
+        }
+        if(BasicGame.canLabComplete === true){
+            this.can.destroy();
+        }
+        if(BasicGame.paperLabComplete === true) {
+            this.newspaper.destroy();
+        }
+        if(BasicGame.documentLabCompelte === true) {
+            this.postCard.destroy();
         }
 
 	},

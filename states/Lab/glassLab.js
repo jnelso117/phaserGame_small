@@ -33,7 +33,21 @@ BasicGame.glassLab.prototype = {
         this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px Arial", wordWrap: true, wordWrapWidth: 500, fill: '#fffff' });
     },
     
-    update: function () {},
+    update: function () {
+        if(BasicGame.gunLabComplete === true){
+            this.gunPrint.alpha = 1;
+            this.gun.destroy();
+        }
+        if(BasicGame.canLabComplete === true){
+            this.can.destroy();
+        }
+        if(BasicGame.paperLabComplete === true) {
+            this.newspaper.destroy();
+        }
+        if(BasicGame.documentLabCompelte === true) {
+            this.postCard.destroy();
+        }
+    },
     
     useSuperGlue: function () {},
     

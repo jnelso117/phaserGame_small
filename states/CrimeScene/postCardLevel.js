@@ -57,7 +57,7 @@ BasicGame.postCardLevel.prototype = {
        
         
         //How the text will look
-        this.response = this.add.text(this.world.centerX+200,this.world.centerY+200, 'What do you want to do?', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 200, fill: '#ffffff' });
+        this.response = this.add.text(this.world.centerX+200,this.world.centerY+200, 'What do you want to do?', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, fill: '#ffffff' });
         
     },
     update: function () {
@@ -103,19 +103,16 @@ BasicGame.postCardLevel.prototype = {
     usePowder: function () {  
       
     this.response.setText("Super glue works best on nonporous items.  Besides, you are not able to fume an item at the crime scene.  Try something else.");
-    this.response.addColor('#B00000',0);
     },
     
     useSuperGlue: function () {
     glue.loadTexture('Incorrect_Superglue');
     this.response.setText("Oils from fingerprints are absorbed into porous materials like paper.  A brush and black powder is not very good at developing prints on porous items.  Try something else.");
-    this.response.addColor('#B00000',0);
     },
     
     useNinhydrin: function () {
     ninhydrin.loadTexture("Incorrect_Ninhydrin");
     this.response.setText("Ninhydrin does work best on porous items, but ninhydrin is difficult to apply to items at the scene.  Try something else.");
-    this.response.addColor('#B00000',0);
         
     },
     collectItem: function () { 
@@ -129,7 +126,6 @@ BasicGame.postCardLevel.prototype = {
     collect.inputEnabled = false;
     BasicGame.postCardLevelComplete = true;
     this.response.setText("Good idea!  The paper can be removed from the crime scene and this porous item can more easily be processed back at the lab.");
-    this.response.addColor('#009900',0);
     },
 
 

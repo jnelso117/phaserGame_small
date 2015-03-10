@@ -33,11 +33,10 @@ create: function() {
 },
 update: function() {
 
-        if (this.counter === 6) 
+        if (this.counter === 5) 
         {
            
-            this.tweenTimer = this.time.events.add(Phaser.Timer.SECOND * 3, this.fadeToLab, this);
-             this.timer = this.time.events.add(Phaser.Timer.Second * 3,this.returnToLab,this);
+             this.state.start('labSceneMain');
             
         }    
             else if (this.counter === 1)

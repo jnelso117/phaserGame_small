@@ -32,15 +32,15 @@ BasicGame.canLab.prototype = {
         
         ninhydrin = this.add.sprite(750, 600, 'Use_Ninhydrin');
         superglue = this.add.sprite(200, 600, 'Use_Superglue');
-        returnStar = this.add.sprite(0,0,'star');
+        returnBack = this.add.sprite(0,0,'Back');
         
         //Enable input on the items
         ninhydrin.inputEnabled = true;
         superglue.inputEnabled = true;
-        returnStar.inputEnabled = true;
+        returnBack.inputEnabled = true;
         superglue.events.onInputDown.add(this.useSuperGlue, this);
         ninhydrin.events.onInputDown.add(this.useNinhydrin, this);
-        returnStar.events.onInputDown.add(this.returnToLab,this);
+        returnBack.events.onInputDown.add(this.returnToLab,this);
 
         //Text for the response
         this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px Arial", wordWrap: true, wordWrapWidth: 500, fill: '#fffff' });
@@ -48,6 +48,19 @@ BasicGame.canLab.prototype = {
     },
     
     update: function () {
+        if(BasicGame.gunLabComplete === true){
+            this.gunPrint.alpha = 1;
+            this.gun.destroy();
+        }
+        if(BasicGame.canLabComplete === true){
+            this.can.destroy();
+        }
+        if(BasicGame.paperLabComplete === true) {
+            this.newspaper.destroy();
+        }
+        if(BasicGame.documentLabCompelte === true) {
+            this.postCard.destroy();
+        }
     
     },
     

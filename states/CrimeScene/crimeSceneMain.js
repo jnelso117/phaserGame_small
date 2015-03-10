@@ -25,7 +25,7 @@ BasicGame.crimeSceneMain = function (game) {
     //Items are named from left to right and top to bottom.  
     //Items 1-3 are the top items and 4-6 are the bottom.
     this.drinkingGlass;
-    this.doorHandle;
+    this.doorKnob;
     this.gun;
     this.newspaper;
     this.paperDoc;
@@ -40,21 +40,21 @@ BasicGame.crimeSceneMain.prototype = {
         this.BG = this.add.image(0,0,'crimeScene');
         this.BG.tint = 0x9999FF;
         this.drinkingGlass = this.add.image(629,573, 'Table_Glass');
-        this.doorHandle = this.add.image(446,302, 'Door_Knob');
+        this.doorKnob = this.add.image(446,302, 'Door_Knob');
         this.gun = this.add.image(604, 830, 'Table_Gun');
         this.newspaper = this.add.image(855,446, 'Table_Newspaper');
         this.paperDoc = this.add.image(424, 630, 'Table_Card');
         this.sodaCan = this.add.image(525,561, 'Table_Can');
         // Enable Input for the images
         this.drinkingGlass.inputEnabled = true;
-        this.doorHandle.inputEnabled = true;
+        this.doorKnob.inputEnabled = true;
         this.gun.inputEnabled = true;
         this.newspaper.inputEnabled = true;
         this.paperDoc.inputEnabled = true;
         this.sodaCan.inputEnabled = true;
         // On input, run the function listed in the parameter
         this.drinkingGlass.events.onInputDown.add(this.startGlassLevel,this);
-        this.doorHandle.events.onInputDown.add(this.startKnobLevel, this);
+        this.doorKnob.events.onInputDown.add(this.startKnobLevel, this);
         this.gun.events.onInputDown.add(this.startWeaponLevel, this);
         this.newspaper.events.onInputDown.add(this.startPaperLevel, this);
         this.paperDoc.events.onInputDown.add(this.startpostCardLevel, this);
@@ -92,7 +92,7 @@ BasicGame.crimeSceneMain.prototype = {
         function usually.  
         
         ********************************************/
-         if (BasicGame.crimeCounter === 6) //checks to see if the levels were cleared
+         if (BasicGame.crimeCounter === 1) //checks to see if the levels were cleared
         {
             this.startIntermission();
         }
@@ -104,8 +104,8 @@ BasicGame.crimeSceneMain.prototype = {
         }
         if (BasicGame.knobLevelComplete === true) 
         {
-            this.doorHandle.inputEnabled = false; //user can no longer access stage
-            this.doorHandle.destroy();
+            this.doorKnob.inputEnabled = false; //user can no longer access stage
+            this.doorKnob.destroy();
         }
         if (BasicGame.weaponLevelComplete === true)
         {

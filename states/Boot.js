@@ -20,7 +20,7 @@ var BasicGame = {
     knobLevelComplete: false,
     weaponLevelComplete: false,
     newspaperLevelComplete: false,
-    documentLevelComplete: false,
+    postCardLevelComplete: false,
     canLevelComplete: false,
     canLabComplete: false,
     gunLabComplete: false,
