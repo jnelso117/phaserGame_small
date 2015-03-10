@@ -9,12 +9,11 @@ BasicGame.Preloader.prototype = {
     this.load.image('crimeScene', 'assets/Crime_Scene/Crime_Background.png');
     this.load.image('crimeSceneFull', 'assets/linvilleCrimeSceneFinal-Crime.png');
     this.load.image('labScene', 'assets/Lab/linville-lab-empty.png');
+    this.load.image('Patrick','assets/Characters/Patrick.png');
+    this.load.image('Patrick_small', 'assets/Characters/Patrick_small.png');
     //Items that are analyzed
-//    this.load.image('Can', 'assets/Can.png');
-//    this.load.image('Gun', 'assets/Gun.png');
-//    this.load.image('Newspaper','assets/Newspaper.png');
-//    this.load.image('Glass', 'assets/Glass.png');
-//    this.load.image('Knob', 'assets/Knob.png');
+    this.load.image('Back', 'assets/buttons/back.png');
+    this.load.image('Next', 'assets/buttons/next.png');
     //Items that the player must locate in the canvas
     this.load.image('Table_Can', 'assets/Crime_Scene/table_can.png');
     this.load.image('Table_Gun', 'assets/Crime_Scene/table_gun.png');
@@ -42,6 +41,10 @@ BasicGame.Preloader.prototype = {
     this.load.image('Correct_Superglue', 'assets/buttons/Superglue/Correct.png');
     this.load.image('Correct_Ninhydrin', 'assets/buttons/Ninhydrin/Correct.png');
     this.load.image('Correct_Collect', 'assets/buttons/Collect/Correct.png');
+    //Fingerprints
+    this.load.image('Patrick_Print', 'assets/fingerprints/arch.png');
+    this.load.image('Helen_Print', 'assets/fingerprints/whorl.png');
+    this.load.image('Victoria_Print','assets/fingerprints/loop.png');
    
     },  
     

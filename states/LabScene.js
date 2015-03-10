@@ -14,10 +14,6 @@ BasicGame.labScene.prototype = {
         this.gun = this.add.sprite(544, 436, 'Lab_Gun');
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
         this.postCard = this.add.sprite(944, 436, 'Lab_Card');
-        //Mouse X, Y pointer
-        this.textX = this.add.text(0,this.world.centerY+300, '', { font: '24px fjalla', wordWrap: true, wordWrapWidth: 500,fill: '#fffff' });
-        this.textY = this.add.text(0,this.world.centerY+340, '', { font: '24px fjalla', wordWrap: true, wordWrapWidth: 500,fill: '#fffff' });
-        this.textX.setText(this.game.input.mousePointer.x);
         // On input, run the function listed in the parameter
         this.can.inputEnabled = true;
         this.gun.inputEnabled = true;
@@ -34,11 +30,9 @@ BasicGame.labScene.prototype = {
     
     update: function () {
         
-        if(BasicGame.labCounter === 1) {
+        if(BasicGame.labCounter === 6) {
             this.state.start('MatchPrints');
         }
-        this.textX.setText(this.game.input.mousePointer.x);
-        this.textY.setText(this.game.input.mousePointer.y);
 
 	},
     startWeaponLevel: function (pointer) {

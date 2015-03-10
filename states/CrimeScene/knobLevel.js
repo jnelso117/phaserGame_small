@@ -12,7 +12,7 @@
 BasicGame.knobLevel = function(game) {
  this.background;
  this.image; //image for the level
- this.returnStar; //return to the Menu
+ this.returnBack; //return to the Menu
  
 };
 BasicGame.knobLevel.prototype = {
@@ -35,21 +35,21 @@ BasicGame.knobLevel.prototype = {
         this.gun.tint = 0x9999FF;
         this.newspaper.tint = 0x9999FF;
         this.paperDoc.tint = 0x9999FF;
-        powder = this.add.sprite(this.world.centerX+400, this.world.centerY-400, 'Use_Powder');
-        glue = this.add.sprite(this.world.centerX+400, this.world.centerY-200, 'Use_Superglue');
-        ninhydrin = this.add.sprite(this.world.centerX+400, this.world.centerY, 'Use_Ninhydrin');
-        collect = this.add.sprite(this.world.centerX+400, this.world.centerY+200, 'Use_Collect');
-        returnStar = this.add.image(0,0, 'star');
+        powder = this.add.sprite(this.world.centerX+400, this.world.centerY-300, 'Use_Powder');
+        glue = this.add.sprite(this.world.centerX+400, this.world.centerY-220, 'Use_Superglue');
+        ninhydrin = this.add.sprite(this.world.centerX+400, this.world.centerY-140, 'Use_Ninhydrin');
+        collect = this.add.sprite(this.world.centerX+400, this.world.centerY-60, 'Use_Collect');
+        returnBack = this.add.image(0,0, 'Back');
         
         //Input enabled for images
-        returnStar.inputEnabled = true;
+        returnBack.inputEnabled = true;
         powder.inputEnabled = true;
         glue.inputEnabled = true;
         ninhydrin.inputEnabled = true;
         collect.inputEnabled = true;  
         
         // When the user clicks on the image, return the method with the message
-        returnStar.events.onInputDown.addOnce(this.returnToMenu,this);
+        returnBack.events.onInputDown.addOnce(this.returnToMenu,this);
         powder.events.onInputDown.addOnce(this.usePowder,this);
         glue.events.onInputDown.addOnce(this.useSuperGlue,this);
         ninhydrin.events.onInputDown.addOnce(this.useNinhydrin,this);
@@ -58,7 +58,7 @@ BasicGame.knobLevel.prototype = {
 
         
         //How the text will look
-        this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, fill: '#fffff' });
+        this.response = this.add.text(this.world.centerX+200,this.world.centerY+200, 'What do you want to do?', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, fill: '#ffffff' });
         
     },
     update: function () {
@@ -70,8 +70,8 @@ BasicGame.knobLevel.prototype = {
         }
         if (BasicGame.knobLevelComplete === true) 
         {
-            this.doorHandle.inputEnabled = false; //user can no longer access stage
-            this.doorHandle.destroy();
+            this.doorKnob.inputEnabled = false; //user can no longer access stage
+            this.doorKnob.destroy();
         }
         if (BasicGame.weaponLevelComplete === true)
         {
@@ -112,24 +112,20 @@ BasicGame.knobLevel.prototype = {
         collect.inputEnabled = false;
         BasicGame.knobLevelComplete = true;
         this.response.setText("A brush and black powder is ideal for processing a clear, nonporous piece of evidence at the scene.  Using the powder, you reveal a fingerprint!  You                 photograph and collect the print using a tape lift.  All items are packaged correctly.  Return to the crime scene to process more evidence, or finish up.");
-        this.response.addColor('#009900',0);
     },
     useSuperGlue: function () {
        glue.loadTexture('Incorrect_Superglue');
        this.response.setText("You are unable to fume with superglue at the crime scene. Try something else.");
-       this.response.addColor('#B00000',0);
     },
     
     useNinhydrin: function () {
       ninhydrin.loadTexture('Incorrect_Ninhydrin');
       this.response.setText("Ninhydrin works best on porous items.  Besides, you would not be able to apply ninhydrin to an item at the crime scene.  Try something else.");
-      this.response.addColor('#B00000',0);
         
     },
     collectItem: function () {   
       collect.loadTexture('Incorrect_Collect');
       this.response.setText("A door handle is really difficult to remove from the crime scene.  The handle is nonporous with a solid, light background, so maybe you could try something           else.");
-      this.response.addColor('#B00000',0);
     },
 
 

@@ -1,8 +1,10 @@
 BasicGame.Menu = function(game) {
 this.startBG;
-this.startStar;
+this.goNext;
 this.text;
 this.counter = 0;
+this.patrick;
+this.fadein;
     
 }
 
@@ -13,27 +15,29 @@ BasicGame.Menu.prototype = {
 
         startBG = this.add.image(0,0, 'crimeSceneFull');
         startBG.tint = 0x000033;
-        this.startStar = this.add.image(0,700, 'star'); 
-        
-        this.text = this.add.text(30, 700, '', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, fill: '#ffffff'});
-        this.text.setText("Police received several 911 calls from a usually quiet neighborhood in Sunny City late on a Friday evening.");
+        this.goNext = this.add.image(120,700, 'Next'); 
+        this.patrick = this.add.sprite(911, 192,'Patrick_small');
+        this.patrick.alpha = 0;
+        this.text = this.add.text(0,this.world.centerY+100, '', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, align: 'center',fill: '#ffffff'});
+        this.text.setText("Police received several calls from a quiet neighborhood in Buckingham, Calarana late on a Friday evening.");
         
     },
     update: function () {
-        this.startStar.inputEnabled = true;
-        this.startStar.events.onInputDown.add(this.enableClick,this);
+        this.goNext.inputEnabled = true;
+        this.goNext.events.onInputDown.add(this.enableClick,this);
         
             if (this.counter === 1)
              {
-            this.text.setText("Within the neighborhood resided Dr. Alfred Dobbins Jr. He was new to the neighborhood and little was known about him");
+            this.text.setText(" IT Consultant Patrick Evans lived at the Fine Tree apartments while he worked on a project in Buckingham. Neighbors do not recall having seen Patrick leave his home the entire day. A woman entered his apartment at approximately 7:18 P.M. and an argument ensued.");
+            this.fadein = this.add.tween(this.patrick).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0, 0, false);
              }
             if (this.counter === 2)
         {
-            this.text.setText("An unknown assailant entered his home and an argument ensued.  Seconds later, a gunshot was heard.");
+            this.text.setText("After a brief, loud argument, neighbors heard a gunshot, and the woman left the scene.");
         }
             if (this.counter === 3)
         {
-            this.text.setText("Police arrived moments later to find Dr. Dobbins unresponsive on his living room floor.");
+            this.text.setText("Patrick was found dead, lying face-down in his living room.");
         }
             if (this.counter === 4)
         {

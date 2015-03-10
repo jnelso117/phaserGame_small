@@ -16,6 +16,8 @@ this.gun;
 this.newspaper;
 this.postCard;
 this.response;
+this.victoriaPrint;
+this.printAppear;
 };
 
 BasicGame.gunLab.prototype = {
@@ -28,6 +30,8 @@ BasicGame.gunLab.prototype = {
         this.gun = this.add.sprite(544, 436, 'Lab_Gun');
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
         this.postCard = this.add.sprite(944, 436, 'Lab_Card');
+        this.victoriaPrint = this.add.sprite(544, 336,'Victoria_Print');
+        this.victoriaPrint.alpha = 0;
         
         //Enable input on the items
         
@@ -57,6 +61,7 @@ BasicGame.gunLab.prototype = {
     superglue.loadTexture('Correct_Superglue');
     this.response.addColor('#009900',0);
     this.response.setText("Good idea!  Super glue fuming works on non-porous items.  A white print appears on the gun.  You dust, tape lift, and photograph the fumed print.");
+    this.printAppear = this.add.tween(this.victoriaPrint).to({alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0, 0, false);
     superglue.inputEnabled = false;
     ninhydrin.inputEnabled = false;
     },

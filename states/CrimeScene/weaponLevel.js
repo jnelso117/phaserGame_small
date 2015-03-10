@@ -12,7 +12,7 @@
 BasicGame.weaponLevel = function(game) {
  this.background;
  this.image; //image for the level
- this.returnStar; //return to the Menu
+ this.returnBack; //return to the Menu
  
 };
 BasicGame.weaponLevel.prototype = {
@@ -35,21 +35,21 @@ BasicGame.weaponLevel.prototype = {
         this.sodaCan.tint = 0x9999FF;
         this.newspaper.tint = 0x9999FF;
         this.paperDoc.tint = 0x9999FF;
-    powder = this.add.sprite(this.world.centerX+400, this.world.centerY-400, 'Use_Powder');
-    glue = this.add.sprite(this.world.centerX+400, this.world.centerY-200, 'Use_Superglue');
-    ninhydrin = this.add.sprite(this.world.centerX+400, this.world.centerY, 'Use_Ninhydrin');
-    collect = this.add.sprite(this.world.centerX+400, this.world.centerY+200, 'Use_Collect');
-    returnStar = this.add.image(0,0, 'star');
+    powder = this.add.sprite(this.world.centerX+400, this.world.centerY-300, 'Use_Powder');
+    glue = this.add.sprite(this.world.centerX+400, this.world.centerY-220, 'Use_Superglue');
+    ninhydrin = this.add.sprite(this.world.centerX+400, this.world.centerY-140, 'Use_Ninhydrin');
+    collect = this.add.sprite(this.world.centerX+400, this.world.centerY-60, 'Use_Collect');
+    returnBack = this.add.image(0,0, 'Back');
         
     //Input enabled for images
-    returnStar.inputEnabled = true;
+    returnBack.inputEnabled = true;
     powder.inputEnabled = true;
     glue.inputEnabled = true;
     ninhydrin.inputEnabled = true;
     collect.inputEnabled = true;  
         
     // When the user clicks on the image, return the method with the message
-    returnStar.events.onInputDown.addOnce(this.returnToMenu,this);
+    returnBack.events.onInputDown.addOnce(this.returnToMenu,this);
     powder.events.onInputDown.addOnce(this.usePowder,this);
     glue.events.onInputDown.addOnce(this.useSuperGlue,this);
     ninhydrin.events.onInputDown.addOnce(this.useNinhydrin,this);
@@ -57,7 +57,7 @@ BasicGame.weaponLevel.prototype = {
      // collect.events.onInputDown.addOnce(this.incorrectResponseThree,this);
         
         //How the text will look
-    this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, fill: '#fffff' });
+    this.response = this.add.text(this.world.centerX+200,this.world.centerY+200, 'What do you want to do?', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, fill: '#ffffff' });
         
     },
     update: function () {

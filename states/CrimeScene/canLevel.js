@@ -13,7 +13,7 @@
 BasicGame.canLevel = function(game) {
  this.background;
  this.image; //image for the level
- this.returnStar; //return to the Menu
+ this.returnBack; //return to the Menu
  
 };
 BasicGame.canLevel.prototype = {
@@ -38,21 +38,21 @@ BasicGame.canLevel.prototype = {
         this.paperDoc.tint = 0x9999FF;
        
        //images for buttons
-        powder = this.add.sprite(this.world.centerX+400, this.world.centerY-400, 'Use_Powder');
-        glue = this.add.sprite(this.world.centerX+400, this.world.centerY-200, 'Use_Superglue');
-        ninhydrin = this.add.sprite(this.world.centerX+400, this.world.centerY, 'Use_Ninhydrin');
-        collect = this.add.sprite(this.world.centerX+400, this.world.centerY+200, 'Use_Collect');
-        returnStar = this.add.image(0,0, 'star');
+        powder = this.add.sprite(this.world.centerX+400, this.world.centerY-300, 'Use_Powder');
+        glue = this.add.sprite(this.world.centerX+400, this.world.centerY-220, 'Use_Superglue');
+        ninhydrin = this.add.sprite(this.world.centerX+400, this.world.centerY-140, 'Use_Ninhydrin');
+        collect = this.add.sprite(this.world.centerX+400, this.world.centerY-60, 'Use_Collect');
+        returnBack = this.add.image(0,0, 'Back');
         
         //Input enabled for images
-        returnStar.inputEnabled = true;
+        returnBack.inputEnabled = true;
         powder.inputEnabled = true;
         glue.inputEnabled = true;
         ninhydrin.inputEnabled = true;
         collect.inputEnabled = true;  
         
         // When the user clicks on the image, return the method with the message
-        returnStar.events.onInputDown.addOnce(this.returnToMenu,this);
+        returnBack.events.onInputDown.addOnce(this.returnToMenu,this);
         powder.events.onInputDown.addOnce(this.usePowder,this);
         glue.events.onInputDown.addOnce(this.useSuperGlue,this);
         ninhydrin.events.onInputDown.addOnce(this.useNinhydrin,this);
@@ -61,7 +61,7 @@ BasicGame.canLevel.prototype = {
 
         
         //How the text will look
-        this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px Arial", wordWrap: true, wordWrapWidth: 500, fill: '#fffff' });
+        this.response = this.add.text(this.world.centerX+200,this.world.centerY+200, 'What do you want to do?', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, fill: '#ffffff' });
         
     },
     update: function () {
@@ -72,8 +72,8 @@ BasicGame.canLevel.prototype = {
         }
         if (BasicGame.knobLevelComplete === true) 
         {
-            this.doorHandle.inputEnabled = false; //user can no longer access stage
-            this.doorHandle.destroy();
+            this.doorKnob.inputEnabled = false; //user can no longer access stage
+            this.doorKnob.destroy();
         }
         if (BasicGame.weaponLevelComplete === true)
         {
@@ -106,18 +106,15 @@ BasicGame.canLevel.prototype = {
     usePowder: function () {
         powder.loadTexture('Incorrect_Powder');
         this.response.setText("A brush and black powder is good for processing nonporous items, but this soda can has a complex background that would not provide good contrast.  Try something else.");
-        this.response.addColor('#B00000',0);
     },
     useSuperGlue: function () {
        glue.loadTexture('Incorrect_Superglue');
        this.response.setText("You are unable to fume with superglue at the crime scene. Try something else.");
-       this.response.addColor('#B00000',0);
     },
     
     useNinhydrin: function () {
       ninhydrin.loadTexture('Incorrect_Ninhydrin');
       this.response.setText("Ninhydrin works best on porous items.  Besides, you would not be able to apply ninhydrin to an item at the crime scene.  Try something else.");
-      this.response.addColor('#B00000',0);
         
     },
     collectItem: function () {   
@@ -131,7 +128,6 @@ BasicGame.canLevel.prototype = {
     collect.inputEnabled = false;
     BasicGame.canLevelComplete = true;
     this.response.setText("Good idea!  The gun can be removed from the crime scene and this nonporous item with a dark background can more easily be processed back at the lab.");
-    this.response.addColor('#009900',0);
     },
 
 
