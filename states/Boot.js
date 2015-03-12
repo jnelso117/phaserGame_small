@@ -56,7 +56,7 @@ BasicGame.Boot.prototype = {
     this.scale.setScreenSize(true);
     
     this.input.addPointer(); //correspond to the 1 pointer
-    this.stage.backgroundColor = '#121643'; 
+    this.stage.backgroundColor = '#ffffff'; 
     this.state.start('Preloader'); //starts the Preloader.js file
 }
 }

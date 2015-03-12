@@ -10,14 +10,14 @@
  ******************************************************************/
     
 BasicGame.glassLevel = function(game) {
- this.background;
+ this.bg;
+ this.textBG;
  this.image; //image for the level
  this.returnBack; //return to the Menu
  this.powder;
  this.glue;
  this.ninhydrin;
  this.collect;
- this.response;
  
 };
 BasicGame.glassLevel.prototype = {
@@ -28,16 +28,17 @@ BasicGame.glassLevel.prototype = {
     create: function () {
         //adding the images to the canvas
          //adding the images to the canvas
-        this.BG = this.add.image(0,0,'crimeScene');
+        this.bg = this.add.image(0,0,'crimeScene');
         this.drinkingGlass = this.add.image(629,573, 'Table_Glass');
         this.doorKnob = this.add.image(446,302, 'Door_Knob');
         this.gun = this.add.image(604, 830, 'Table_Gun');
         this.newspaper = this.add.image(855,446, 'Table_Newspaper');
         this.paperDoc = this.add.image(424, 630, 'Table_Card');
         this.sodaCan = this.add.image(525,561, 'Table_Can');
+        this.textBG = this.add.sprite(this.world.centerX+95,700,'text_bg');
        
        //Adding a tint to all other objects to give the game a more focused feel
-        this.BG.tint = 0x9999FF;
+        this.bg.tint = 0x9999FF;
         this.doorKnob.tint = 0x9999FF;
         this.sodaCan.tint = 0x9999FF;
         this.gun.tint = 0x9999FF;
@@ -66,7 +67,7 @@ BasicGame.glassLevel.prototype = {
 
         
         //How the text will look
-        this.response = this.add.text(this.world.centerX+200,this.world.centerY+200, 'What do you want to do?', { font: "24px Arial", wordWrap: true, wordWrapWidth: 500, fill: '#ffffff' });
+         this.response = this.add.text(this.world.centerX+200,this.world.centerY+275, 'Which fingerprinting process is best for this piece of evidence?', { font: "24px Helvetica", align: 'left', wordWrap: true, wordWrapWidth: this.textBG.width-100, fill: '#ffffff' });
         
         
     },
@@ -115,12 +116,13 @@ BasicGame.glassLevel.prototype = {
         //  Also, it will stop them from clicking correct option and incrementing the crimeCounter by an infinite amount
         BasicGame.crimeCounter++;
         powder.loadTexture('Correct_Powder');
+        returnBack.loadTexture('Next');
         powder.inputEnabled = false;
         glue.inputEnabled = false;
         ninhydrin.inputEnabled = false;
         collect.inputEnabled = false;
         BasicGame.glassLevelComplete = true;
-        this.response.setText("A brush and black powder is ideal for processing a clear, nonporous piece of evidence at the scene.  Using the powder, you reveal a fingerprint!  You photograph and collect the print using a tape lift.  All items are packaged correctly.  Return to the crime scene to process more evidence, or finish up.");
+        this.response.setText("A brush and black powder is ideal for processing a clear, nonporous piece of evidence at the scene.  Using the powder, you reveal a fingerprint!  You photograph and collect the print using a tape lift.  All items are packaged correctly.  Click Next and return to the crime scene to process more evidence.");
     },
     useSuperGlue: function () {
         glue.loadTexture('Incorrect_Superglue');

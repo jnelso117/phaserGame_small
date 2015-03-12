@@ -16,6 +16,9 @@ BasicGame.postCardLab.prototype = {
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
         this.postCard = this.add.sprite(944, 436, 'Lab_Card');
         
+        this.gun.tint = 0x9999FF;
+        this.newspaper.tint = 0x9999FF;
+        this.can.tint = 0x9999FF;
         ninhydrin = this.add.sprite(750, 600, 'Use_Ninhydrin');
         superglue = this.add.sprite(200, 600, 'Use_Superglue');
         returnBack = this.add.sprite(0,0,'Back');

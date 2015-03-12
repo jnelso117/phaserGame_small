@@ -13,6 +13,7 @@ BasicGame.paperLevel = function(game) {
  this.background;
  this.image; //image for the level
  this.returnBack; //return to the Menu
+ this.textBG;
  
 };
 BasicGame.paperLevel.prototype = {
@@ -26,6 +27,7 @@ BasicGame.paperLevel.prototype = {
         this.newspaper = this.add.image(855,446, 'Table_Newspaper');
         this.paperDoc = this.add.image(424, 630, 'Table_Card');
         this.sodaCan = this.add.image(525,561, 'Table_Can');
+        this.textBG = this.add.sprite(this.world.centerX+95,700,'text_bg');
        
        //Adding a tint to all other objects to give the game a more focused feel
         this.BG.tint = 0x9999FF;
@@ -59,7 +61,7 @@ BasicGame.paperLevel.prototype = {
 
         
         //How the text will look
-        this.response = this.add.text(this.world.centerX+200,this.world.centerY+200, 'What do you want to do?', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, fill: '#ffffff' });
+        this.response = this.add.text(this.world.centerX+200,this.world.centerY+275, 'Which fingerprinting process is best for this piece of evidence?', { font: "24px Helvetica", align: 'left', wordWrap: true, wordWrapWidth: this.textBG.width-100, fill: '#ffffff' });
         
     },
     update: function () {
@@ -104,11 +106,11 @@ BasicGame.paperLevel.prototype = {
     
     usePowder: function () {
     powder.loadTexture('Incorrect_Powder');   
-    this.response.setText("A brush and black powder is good for processing nonporous items, but the weapon has a very dark background that would not provide good contrast with the powder.     Try something else.");
+    this.response.setText("Oils from fingerprints are absorbed into porous materials like a newspaper.  A brush and black powder is not very good at developing prints on porous items.  Try something else.");
     },
     useSuperGlue: function () {
     glue.loadTexture('Incorrect_Superglue');
-    this.response.setText("Super glue works best on nonporous items.  Besides, you are not able to fume an item at the crime scene.  Try something else.");
+    this.response.setText("Super glue works best on nonporous items.  Besides, you are not able to fume an item at the crime scene. Try something else.");
     },
     
     useNinhydrin: function () {
@@ -120,13 +122,14 @@ BasicGame.paperLevel.prototype = {
     //  This will stop the user from visiting the other options
     //  Also, it will stop them from clicking option 1 and incrementing the crimeCounter by an infinite amount
     collect.loadTexture('Correct_Collect');
+    returnBack.loadTexture('Next');
     BasicGame.crimeCounter++;
     powder.inputEnabled = false;
     glue.inputEnabled = false;
     ninhydrin.inputEnabled = false;
     collect.inputEnabled = false;
     BasicGame.paperLevelComplete = true;
-    this.response.setText("Good idea!  The newspaper can be removed from the crime scene and this porous item can more easily be processed back at the lab.");
+    this.response.setText("Good idea!  The newspaper can be removed from the crime scene and this porous item can more easily be processed back at the lab. Click Next to process more evidence.");
     },
 
 

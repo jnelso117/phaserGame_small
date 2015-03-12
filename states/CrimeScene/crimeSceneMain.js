@@ -40,11 +40,17 @@ BasicGame.crimeSceneMain.prototype = {
         this.BG = this.add.image(0,0,'crimeScene');
         this.BG.tint = 0x9999FF;
         this.drinkingGlass = this.add.image(629,573, 'Table_Glass');
+        this.tweenGlass = this.add.tween(this.drinkingGlass).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);
         this.doorKnob = this.add.image(446,302, 'Door_Knob');
+        this.tweenKnob = this.add.tween(this.doorKnob).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);;
         this.gun = this.add.image(604, 830, 'Table_Gun');
+        this.tweenGun = this.add.tween(this.gun).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);;
         this.newspaper = this.add.image(855,446, 'Table_Newspaper');
+        this.paperTween = this.add.tween(this.newspaper).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);;
         this.paperDoc = this.add.image(424, 630, 'Table_Card');
+        this.docTween = this.add.tween(this.paperDoc).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);;
         this.sodaCan = this.add.image(525,561, 'Table_Can');
+        this.canTween = this.add.tween(this.sodaCan).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);
         // Enable Input for the images
         this.drinkingGlass.inputEnabled = true;
         this.doorKnob.inputEnabled = true;
@@ -60,8 +66,7 @@ BasicGame.crimeSceneMain.prototype = {
         this.paperDoc.events.onInputDown.add(this.startpostCardLevel, this);
         this.sodaCan.events.onInputDown.add(this.startCanLevel, this);
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-        //this shows how many stages have been completed
-         text = this.add.text(0,this.world.centerY, BasicGame.crimeCounter, { fill: '#fffff' });
+        //this shows how many stages have been completeds
         
 
 	},
@@ -92,7 +97,7 @@ BasicGame.crimeSceneMain.prototype = {
         function usually.  
         
         ********************************************/
-         if (BasicGame.crimeCounter === 1) //checks to see if the levels were cleared
+         if (BasicGame.crimeCounter === 6) //checks to see if the levels were cleared
         {
             this.startIntermission();
         }

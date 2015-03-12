@@ -15,8 +15,10 @@ BasicGame.labScene.prototype = {
         this.gun = this.add.sprite(544, 436, 'Lab_Gun');
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
         this.postCard = this.add.sprite(944, 436, 'Lab_Card');
-        this.gunPrint = this.add.sprite(544,-10,'Victoria_Print');
+        this.gunPrint = this.add.sprite(544,-10,'Veronica_Print');
         this.gunPrint.alpha = 0;
+        this.paperPrint = this.add.sprite(944,-15,'Helen_Print');
+        this.paperPrint.alpha = 0;
         // On input, run the function listed in the parameter
         this.can.inputEnabled = true;
         this.gun.inputEnabled = true;
@@ -44,6 +46,7 @@ BasicGame.labScene.prototype = {
             this.can.destroy();
         }
         if(BasicGame.paperLabComplete === true) {
+            this.paperPrint.alpha = 1;
             this.newspaper.destroy();
         }
         if(BasicGame.documentLabCompelte === true) {

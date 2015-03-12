@@ -15,10 +15,10 @@ BasicGame.Menu.prototype = {
 
         startBG = this.add.image(0,0, 'crimeSceneFull');
         startBG.tint = 0x000033;
-        this.goNext = this.add.image(120,700, 'Next'); 
-        this.patrick = this.add.sprite(911, 192,'Patrick_small');
+        this.goNext = this.add.image(120,710, 'Next'); 
+        this.patrick = this.add.sprite(911, 192,'Patrick');
         this.patrick.alpha = 0;
-        this.text = this.add.text(0,this.world.centerY+100, '', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, align: 'center',fill: '#ffffff'});
+        this.text = this.add.text(0,this.world.centerY+100, '', { font: "24px Helvetica", wordWrap: true, wordWrapWidth: 500, align: 'center',fill: '#ffffff'});
         this.text.setText("Police received several calls from a quiet neighborhood in Buckingham, Calarana late on a Friday evening.");
         
     },
@@ -28,7 +28,7 @@ BasicGame.Menu.prototype = {
         
             if (this.counter === 1)
              {
-            this.text.setText(" IT Consultant Patrick Evans lived at the Fine Tree apartments while he worked on a project in Buckingham. Neighbors do not recall having seen Patrick leave his home the entire day. A woman entered his apartment at approximately 7:18 P.M. and an argument ensued.");
+            this.text.setText(" IT Consultant, Patrick Evans lived at the Fine Tree apartments while he worked on a project in Buckingham. Neighbors do not recall having seen Patrick leave his home the entire day. A woman entered his apartment at approximately 7:18 P.M. and an argument ensued.");
             this.fadein = this.add.tween(this.patrick).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0, 0, false);
              }
             if (this.counter === 2)
@@ -45,7 +45,7 @@ BasicGame.Menu.prototype = {
         }
             if (this.counter === 5)
         {
-            this.text.setText("Search the living room for possible fingerprints and clues");
+            this.text.setText("Search the living room for possible fingerprints and clues.");
         }
             if (this.counter === 6) 
         {

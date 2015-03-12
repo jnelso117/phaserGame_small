@@ -15,6 +15,8 @@ this.can;
 this.gun;
 this.newspaper;
 this.postCard;
+this.helenPrint;
+this.printAppear;
 
 };
 
@@ -27,6 +29,12 @@ BasicGame.paperLab.prototype = {
         this.gun = this.add.sprite(544, 436, 'Lab_Gun');
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
         this.postCard = this.add.sprite(944, 436, 'Lab_Card');
+        this.helenPrint = this.add.sprite(944,-15,'Helen_Print');
+        this.helenPrint.alpha = 0;
+        
+        this.gun.tint = 0x9999FF;
+        this.can.tint = 0x9999FF;
+        this.postCard.tint - 0x9999FF;
         
         //Enable input on the items
         this.can.inputEnabled = true;
@@ -46,7 +54,7 @@ BasicGame.paperLab.prototype = {
         returnBack.events.onInputDown.addOnce(this.returnToLab,this);
         
         //Text for the response
-        this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px Arial", wordWrap: true, wordWrapWidth: 500, fill: '#fffff' });
+        this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px Helvetica", wordWrap: true, wordWrapWidth: 500, fill: '#fffff' });
 
     },
     
@@ -75,6 +83,7 @@ BasicGame.paperLab.prototype = {
     BasicGame.paperLabComplete = true;
     ninhydrin.loadTexture('Correct_Ninhydrin');
     this.response.setText("Good idea!  Ninhydrin works on porous items like paper.  A purple print appears on the newspaper.");
+    this.printAppear = this.add.tween(this.helenPrint).to({alpha: 1}, 2000, Phaser.Easing.Linear.None, true, 0, 0, false);    
     ninhydrin.inputEnabled = false;
     superglue.inputEnabled = false;
     },

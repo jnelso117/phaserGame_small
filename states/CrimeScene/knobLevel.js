@@ -13,6 +13,7 @@ BasicGame.knobLevel = function(game) {
  this.background;
  this.image; //image for the level
  this.returnBack; //return to the Menu
+ this.textBG;
  
 };
 BasicGame.knobLevel.prototype = {
@@ -27,6 +28,7 @@ BasicGame.knobLevel.prototype = {
         this.newspaper = this.add.image(855,446, 'Table_Newspaper');
         this.paperDoc = this.add.image(424, 630, 'Table_Card');
         this.sodaCan = this.add.image(525,561, 'Table_Can');
+        this.textBG = this.add.sprite(this.world.centerX+95, 700, 'text_bg');
        
        //Adding a tint to all other objects to give the game a more focused feel
         this.BG.tint = 0x9999FF;
@@ -58,7 +60,7 @@ BasicGame.knobLevel.prototype = {
 
         
         //How the text will look
-        this.response = this.add.text(this.world.centerX+200,this.world.centerY+200, 'What do you want to do?', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, fill: '#ffffff' });
+        this.response = this.add.text(this.world.centerX+200,this.world.centerY+275, 'Which fingerprinting process is best for this piece of evidence?', { font: "24px Helvetica", wordWrap: true, align: 'left',wordWrapWidth: this.textBG.width-100, fill: '#ffffff' });
         
     },
     update: function () {
@@ -106,12 +108,13 @@ BasicGame.knobLevel.prototype = {
         //  Also, it will stop them from clicking option 1 and incrementing the crimeCounter by an infinite amount
         BasicGame.crimeCounter++;
         powder.loadTexture('Correct_Powder');
+        returnBack.loadTexture('Next');
         powder.inputEnabled = false;
         glue.inputEnabled = false;
         ninhydrin.inputEnabled = false;
         collect.inputEnabled = false;
         BasicGame.knobLevelComplete = true;
-        this.response.setText("A brush and black powder is ideal for processing a clear, nonporous piece of evidence at the scene.  Using the powder, you reveal a fingerprint!  You photograph and collect the print using a tape lift.  All items are packaged correctly.  Return to the crime scene to process more evidence, or finish up.");
+        this.response.setText("A brush and black powder is ideal for processing a clear, nonporous piece of evidence at the scene.  Using the powder, you reveal a fingerprint!  You photograph and collect the print using a tape lift.  All items are packaged correctly.  Click Next to process more evidence.");
     },
     useSuperGlue: function () {
        glue.loadTexture('Incorrect_Superglue');
@@ -125,7 +128,7 @@ BasicGame.knobLevel.prototype = {
     },
     collectItem: function () {   
       collect.loadTexture('Incorrect_Collect');
-      this.response.setText("A door handle is really difficult to remove from the crime scene.  The handle is nonporous with a solid, light background, so maybe you could try something           else.");
+      this.response.setText("A door handle is really difficult to remove from the crime scene.  The handle is nonporous with a solid, light background, so maybe you could try something else.");
     },
 
 

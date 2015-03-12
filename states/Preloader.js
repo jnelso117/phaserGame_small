@@ -5,12 +5,16 @@ BasicGame.Preloader = function(game) {
 BasicGame.Preloader.prototype = {
     
     preload: function() {
-    this.load.image('star','assets/star.png');
+    this.load.image('text_bg','assets/text_background.png');
     this.load.image('crimeScene', 'assets/Crime_Scene/Crime_Background.png');
     this.load.image('crimeSceneFull', 'assets/linvilleCrimeSceneFinal-Crime.png');
     this.load.image('labScene', 'assets/Lab/linville-lab-empty.png');
     this.load.image('Patrick','assets/Characters/Patrick.png');
     this.load.image('Patrick_small', 'assets/Characters/Patrick_small.png');
+    this.load.image('Veronica','assets/Characters/Veronica.png');
+    this.load.image('Veronica_small', 'assets/Characters/Veronica_small.png');
+    this.load.image('Helen','assets/Characters/Helen.png');
+    this.load.image('Helen_small', 'assets/Characters/Helen_small.png');
     //Items that are analyzed
     this.load.image('Back', 'assets/buttons/back.png');
     this.load.image('Next', 'assets/buttons/next.png');
@@ -44,7 +48,7 @@ BasicGame.Preloader.prototype = {
     //Fingerprints
     this.load.image('Patrick_Print', 'assets/fingerprints/arch.png');
     this.load.image('Helen_Print', 'assets/fingerprints/whorl.png');
-    this.load.image('Victoria_Print','assets/fingerprints/loop.png');
+    this.load.image('Veronica_Print','assets/fingerprints/loop.png');
    
     },  
     

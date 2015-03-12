@@ -16,6 +16,7 @@ this.gun;
 this.newspaper;
 this.postCard;
 this.response;
+this.textBG;
 this.victoriaPrint;
 this.printAppear;
 };
@@ -30,13 +31,17 @@ BasicGame.gunLab.prototype = {
         this.gun = this.add.sprite(544, 436, 'Lab_Gun');
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
         this.postCard = this.add.sprite(944, 436, 'Lab_Card');
+        this.textBG = this.add.sprite(350, 680,'text_bg');
         this.victoriaPrint = this.add.sprite(544, -10,'Victoria_Print');
         this.victoriaPrint.alpha = 0;
         
-        //Enable input on the items
+        this.can.tint = 0x9999FF;
+        this.newspaper.tint = 0x9999FF;
+        this.postCard.tint - 0x9999FF;
         
-        ninhydrin = this.add.sprite(750, 600, 'Use_Ninhydrin');
-        superglue = this.add.sprite(200, 600, 'Use_Superglue');
+        //Enable input on the items
+        ninhydrin = this.add.sprite(800, 550, 'Use_Ninhydrin');
+        superglue = this.add.sprite(300, 550, 'Use_Superglue');
         returnBack = this.add.sprite(0,0,'Back');
         
         //Enable input on the items
@@ -49,7 +54,7 @@ BasicGame.gunLab.prototype = {
 
                 
         //Text for the response
-        this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px Arial", wordWrap: true, wordWrapWidth: 500, fill: '#fffff' });
+        this.response = this.add.text(400,700, 'Which fingerprinting process is best for this piece of evidence?', { font: "24px Helvetica", align: 'Left', wordWrap: true, wordWrapWidth: this.textBG.width-100, fill: '#ffffff' });
     
     },
     

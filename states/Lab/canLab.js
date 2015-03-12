@@ -16,6 +16,8 @@ BasicGame.canLab = function(game) {
     this.postCard;
     this.ninhydrin;
     this.superglue;
+    this.textBG;
+    this.gunPrint
 
 };
 
@@ -29,9 +31,14 @@ BasicGame.canLab.prototype = {
         this.gun = this.add.sprite(544, 436, 'Lab_Gun');
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
         this.postCard = this.add.sprite(944, 436, 'Lab_Card');
+        this.textBG = this.add.sprite(350, 680, 'text_bg');
         
-        ninhydrin = this.add.sprite(750, 600, 'Use_Ninhydrin');
-        superglue = this.add.sprite(200, 600, 'Use_Superglue');
+        this.gun.tint = 0x9999FF;
+        this.newspaper.tint = 0x9999FF;
+        this.postCard.tint = 0x9999FF;
+        
+        ninhydrin = this.add.sprite(800, 550, 'Use_Ninhydrin');
+        superglue = this.add.sprite(300, 550, 'Use_Superglue');
         returnBack = this.add.sprite(0,0,'Back');
         
         //Enable input on the items
@@ -43,7 +50,7 @@ BasicGame.canLab.prototype = {
         returnBack.events.onInputDown.add(this.returnToLab,this);
 
         //Text for the response
-        this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px Arial", wordWrap: true, wordWrapWidth: 500, fill: '#fffff' });
+        this.response = this.add.text(400,700, 'Which fingerprinting process is best for this piece of evidence?', { font: "24px Helvetica", align: 'Left', wordWrap: true, wordWrapWidth: this.textBG.width-100, fill: '#ffffff' });
     
     },
     
@@ -67,7 +74,6 @@ BasicGame.canLab.prototype = {
     useSuperGlue: function () {
     BasicGame.labCounter++;
     BasicGame.canLabComplete = true;
-    this.response.addColor('#009900',0);
     superglue.loadTexture('Correct_Superglue');
     this.response.setText("Good idea!  Super glue fuming works on non-porous items.  Unfortunately, there are not any usable prints on this item.");
     superglue.inputEnabled = false;
@@ -77,7 +83,6 @@ BasicGame.canLab.prototype = {
     },
     
     useNinhydrin: function () {
-    this.response.addColor('#B00000',0);
     ninhydrin.loadTexture('Incorrect_Ninhydrin');
     this.response.setText("The soda can is a nonporous item.  Ninhydrin works best on porous items, like paper.");
     
