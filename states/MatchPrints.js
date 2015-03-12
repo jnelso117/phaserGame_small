@@ -6,6 +6,7 @@ this.VeronicaPrint;
 this.patrickPortrait;
 this.helenPortrait;
 this.VeronicaPortrait;
+this.textBG;
 this.response;
 this.goNext;
 };
@@ -16,11 +17,12 @@ BasicGame.MatchPrints.prototype = {
         this.goNext = this.add.sprite(this.world.centerX,this.world.centerY,'Next');
         this.patrickPortrait = this.add.sprite(0,600,'Patrick_small');
         this.helenPortrait = this.add.sprite(533,600,'Helen_small');
-        this.VeronicaPortrait = this.add.sprite(1066,600,'Veronica_Small');
+        this.VeronicaPortrait = this.add.sprite(1066,600,'Veronica_small');
         this.patrickPrint = this.add.sprite(0,0,'Patrick_Print');
         this.helenPrint = this.add.sprite(200, 0, 'Helen_Print');
         this.VeronicaPrint = this.add.sprite(400,0,'Veronica_Print');
         this.VeronicaPrintTwo = this.add.sprite(600,0,'Veronica_Print');
+        this.textBG = this.add.sprite(900,0,'text_bg');
         
         //enable input on the print sprites and allow drag
         this.helenPrint.inputEnabled = true;
@@ -34,7 +36,7 @@ BasicGame.MatchPrints.prototype = {
         this.patrickPrint.events.onDragStop.add(this.checkPatrick, this);
         
         this.response = this.add.text(this.world.centerX, 500, '',{ font: "24px Helvetica", wordWrap: true, wordWrapWidth: 500, align: 'center', fill: '#000000'});
-        this.text = this.add.text(this.world.centerX, this.world.centerY+200,'We have 4 fingerprints let\'s see which fingerprints belong to Patrick. Note: You can only drag items right now. Currently still being completed.', {font: '24px Helvetica', wordWrap: true, wordWrapWidth: 500, fill:'#000000' });
+        this.text = this.add.text(920, 20,'We have 4 fingerprints let\'s see which fingerprints belong to Patrick. Note: You can only drag items right now. Currently still being completed.', {font: '24px Helvetica', wordWrap: true,align: 'left', wordWrapWidth: this.textBG.width-100, fill:'#ffffff' });
     },
     update: function() {
         
@@ -51,9 +53,13 @@ BasicGame.MatchPrints.prototype = {
         }
         else if (this.patrickPrint.x <= 533 && this.patrickPrint.y >= this.world.centerY) {
             this.patrickPrint.destroy();
-            this.response.setText("Correct! This print belongs to the victim, Patrick!");
+            this.response.setText("Correct! This print matches the deceased victim, Patrick Evans.");
         }
         
     },
+    checkVeronica: function () {
+    },
+    checkHelen: function () {
+    }
     
 }

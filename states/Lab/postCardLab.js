@@ -4,6 +4,9 @@ this.can;
 this.gun;
 this.newspaper;
 this.postCard;
+this.gunprint;
+this.paperPrint;
+this.textBG;
 };
 
 BasicGame.postCardLab.prototype = {
@@ -15,12 +18,16 @@ BasicGame.postCardLab.prototype = {
         this.gun = this.add.sprite(544, 436, 'Lab_Gun');
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
         this.postCard = this.add.sprite(944, 436, 'Lab_Card');
-        
+        this.textBG = this.add.sprite(350, 680, 'text_bg');
+        this.gunPrint = this.add.sprite(544,-10,'Veronica_Print');
+        this.gunPrint.alpha = 0;
+        this.paperPrint = this.add.sprite(944,-15,'Helen_Print');
+        this.paperPrint.alpha = 0; 
         this.gun.tint = 0x9999FF;
         this.newspaper.tint = 0x9999FF;
         this.can.tint = 0x9999FF;
-        ninhydrin = this.add.sprite(750, 600, 'Use_Ninhydrin');
-        superglue = this.add.sprite(200, 600, 'Use_Superglue');
+        ninhydrin = this.add.sprite(800, 550, 'Use_Ninhydrin');
+        superglue = this.add.sprite(300, 550, 'Use_Superglue');
         returnBack = this.add.sprite(0,0,'Back');
         
         //Enable input on the items
@@ -33,18 +40,20 @@ BasicGame.postCardLab.prototype = {
 
         
         //Text for the response
-        this.response = this.add.text(0,this.world.centerY+300, '', { font: "24px fjalla", wordWrap: true, wordWrapWidth: 500, fill: '#fffff' });
+        this.response = this.add.text(400,700, 'Which fingerprinting process is best for this piece of evidence?', { font: "24px Helvetica", wordWrap: true, wordWrapWidth: this.textBG.width-100, fill: '#ffffff' });
     
     },
     
     update: function () {
         if(BasicGame.gunLabComplete === true){
+            this.gunPrint.alpha = 1;
             this.gun.destroy();
         }
         if(BasicGame.canLabComplete === true){
             this.can.destroy();
         }
         if(BasicGame.paperLabComplete === true) {
+            this.paperPrint.alpha = 1;
             this.newspaper.destroy();
         }
         if(BasicGame.documentLabCompelte === true) {
@@ -61,6 +70,7 @@ BasicGame.postCardLab.prototype = {
      BasicGame.labCounter++;
     BasicGame.canLabComplete = true;
     ninhydrin.loadTexture('Correct_Ninhydrin');
+    returnBack.loadTexture('Next');
     this.response.setText("Good idea!  Ninhydrin works on porous items like paper. Unfortunately, there are not any usable prints on this item.");
     superglue.inputEnabled = false;
     ninhydrin.inputEnabled = false;

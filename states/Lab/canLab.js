@@ -17,7 +17,8 @@ BasicGame.canLab = function(game) {
     this.ninhydrin;
     this.superglue;
     this.textBG;
-    this.gunPrint
+    this.gunPrint;
+    this.paperPrint;
 
 };
 
@@ -32,6 +33,10 @@ BasicGame.canLab.prototype = {
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
         this.postCard = this.add.sprite(944, 436, 'Lab_Card');
         this.textBG = this.add.sprite(350, 680, 'text_bg');
+        this.gunPrint = this.add.sprite(544,-10,'Veronica_Print');
+        this.gunPrint.alpha = 0;
+        this.paperPrint = this.add.sprite(944,-15,'Helen_Print');
+        this.paperPrint.alpha = 0; 
         
         this.gun.tint = 0x9999FF;
         this.newspaper.tint = 0x9999FF;
@@ -63,6 +68,7 @@ BasicGame.canLab.prototype = {
             this.can.destroy();
         }
         if(BasicGame.paperLabComplete === true) {
+            this.paperPrint.alpha = 1;
             this.newspaper.destroy();
         }
         if(BasicGame.documentLabCompelte === true) {
@@ -75,7 +81,8 @@ BasicGame.canLab.prototype = {
     BasicGame.labCounter++;
     BasicGame.canLabComplete = true;
     superglue.loadTexture('Correct_Superglue');
-    this.response.setText("Good idea!  Super glue fuming works on non-porous items.  Unfortunately, there are not any usable prints on this item.");
+    returnBack.loadTexture('Next')
+    this.response.setText("Good idea!  Super glue fuming works on non-porous items.  Unfortunately, there are not any usable prints on this item. Click Next to continue");
     superglue.inputEnabled = false;
     ninhydrin.inputEnabled = false;
         

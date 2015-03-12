@@ -4,6 +4,7 @@ BasicGame.labScene = function(game) {
     this.newspaper;
     this.postCard;
     this.gunPrint;
+    this.paperPrint;
 };
 
 BasicGame.labScene.prototype = {

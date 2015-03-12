@@ -17,7 +17,8 @@ this.newspaper;
 this.postCard;
 this.response;
 this.textBG;
-this.victoriaPrint;
+this.veronicaPrint;
+this.paperPrint;
 this.printAppear;
 };
 
@@ -32,12 +33,14 @@ BasicGame.gunLab.prototype = {
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
         this.postCard = this.add.sprite(944, 436, 'Lab_Card');
         this.textBG = this.add.sprite(350, 680,'text_bg');
-        this.victoriaPrint = this.add.sprite(544, -10,'Victoria_Print');
-        this.victoriaPrint.alpha = 0;
+        this.paperPrint = this.add.sprite(944,-15,'Helen_Print');
+        this.paperPrint.alpha = 0; 
+        this.veronicaPrint = this.add.sprite(544, -10,'Veronica_Print');
+        this.veronicaPrint.alpha = 0;
         
         this.can.tint = 0x9999FF;
         this.newspaper.tint = 0x9999FF;
-        this.postCard.tint - 0x9999FF;
+        this.postCard.tint = 0x9999FF;
         
         //Enable input on the items
         ninhydrin = this.add.sprite(800, 550, 'Use_Ninhydrin');
@@ -66,9 +69,10 @@ BasicGame.gunLab.prototype = {
             this.can.destroy();
         }
         if(BasicGame.paperLabComplete === true) {
+            this.paperPrint.alpha = 1;
             this.newspaper.destroy();
         }
-        if(BasicGame.documentLabCompelte === true) {
+        if(BasicGame.documentLabComplete === true) {
             this.postCard.destroy();
         }
     },
@@ -77,8 +81,9 @@ BasicGame.gunLab.prototype = {
     BasicGame.labCounter++;
     BasicGame.gunLabComplete = true;
     superglue.loadTexture('Correct_Superglue');
+    returnBack.loadTexture('Next');
     this.response.setText("Good idea!  Super glue fuming works on non-porous items.  A white print appears on the gun.  You dust, tape lift, and photograph the fumed print.");
-    this.printAppear = this.add.tween(this.victoriaPrint).to({alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0, 0, false);
+    this.printAppear = this.add.tween(this.veronicaPrint).to({alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0, 0, false);
     superglue.inputEnabled = false;
     ninhydrin.inputEnabled = false;
     },

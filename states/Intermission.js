@@ -6,6 +6,7 @@ BasicGame.Intermission = function(game) {
     this.counter = 0;
     this.knobPrint;
     this.glassPrint;
+    this.veronica;
     this.helen;
     this.timer;
 }
@@ -20,15 +21,17 @@ create: function() {
     this.text = this.add.text(50,this.world.centerY+150, 'You found a lot of clues to this case, including two fingerprints.', { font: '24px Helvetica', wordWrap: true, wordWrapWidth: 500, align: 'center',fill: '#000000' });
     this.text.setShadow(0, 0, 'rgba(0, 0, 0, 2)', 0);
     //Fingerprints
-    this.knobPrint = this.add.image(this.world.centerX+200, this.world.centerY, 'Veronica_Print');
-    this.glassPrint = this.add.image(this.world.centerX, this.world.centerY, 'Patrick_Print');
-    this.helen = this.add.image(this.world.centerX+400, this.world.centerY, 'Veronica_Print');
+    this.knobPrint = this.add.image(0, this.world.centerY-200, 'Veronica_Print');
+    this.glassPrint = this.add.image(200, this.world.centerY-200, 'Patrick_Print');
+    this.helen = this.add.image(1067,600,'Helen_small');
+    this.veronica = this.add.image(1067, 0, 'Veronica_small');
     this.goNext.inputEnabled = true;
     this.goNext.events.onInputDown.add(this.enableClick,this);
     
     //Items Opacity
     this.knobPrint.alpha = 0;
     this.glassPrint.alpha = 0;
+    this.veronica.alpha = 0;
     this.helen.alpha = 0;
 },
 update: function() {
@@ -57,10 +60,12 @@ update: function() {
             this.text.setText("After collecting your evidence, your forensic artist drew two descriptions(based on an explanation of a neighbor) of the two women that left Patrick's apartment on the day of his untimely death.");
         }
         else if(this.counter === 5) {
-            this.text.setText("Here is the portrait of the woman who left the apartment at approximately at 7:18 P.M. Police have identified her as Veronica Johnson, Patrick's ex-girlfriend.");
+            this.text.setText("Here is the portrait of the woman who left the apartment at approximately 7:18 P.M. Police have identified her as Veronica Johnson, Patrick's ex-girlfriend.");
+            this.fade = this.add.tween(this.veronica).to( { alpha: 1}, 1000, Phaser.Easing.Linear.None, true, 0, 0, false);
         }
         else if(this.counter === 6) {
-         this.text.setText("Here is a drawing of the womaa that left the apartment approximately 4 hours before Patrick's death. Neighbors assumed that it was his new girlfriend, Helen Williams");   
+         this.text.setText("Here is a drawing of the woman that left the apartment approximately 4 hours before Patrick's death. Neighbors assumed that it was his new girlfriend, Helen Williams.");   
+            this.fade = this.add.tween(this.helen).to( { alpha: 1}, 1000, Phaser.Easing.Linear.None, true, 0, 0, false);
         }
             else if (this.counter === 7)
         {
