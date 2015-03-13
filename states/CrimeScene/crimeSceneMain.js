@@ -97,7 +97,7 @@ BasicGame.crimeSceneMain.prototype = {
         function usually.  
         
         ********************************************/
-         if (BasicGame.crimeCounter === 6) //checks to see if the levels were cleared
+         if (BasicGame.crimeCounter === 0) //checks to see if the levels were cleared
         {
             this.startIntermission();
         }
