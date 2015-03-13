@@ -17,7 +17,7 @@ BasicGame.Menu.prototype = {
         this.goNext = this.add.image(120,710, 'Next'); 
         this.patrick = this.add.sprite(911, 192,'Patrick');
         this.patrick.alpha = 0;
-        this.text = this.add.text(0,this.world.centerY+100, '', { font: "24px Helvetica", wordWrap: true, wordWrapWidth: 500, align: 'center',fill: '#ffffff'});
+        this.text = this.add.text(0,this.world.centerY+100, '', { font: "24px Helvetica", wordWrap: true, wordWrapWidth: 500, align: 'left',fill: '#ffffff'});
         this.text.setText("Police received several calls from a quiet neighborhood in Buckingham, Calarana late on a Friday evening.");
         
     },

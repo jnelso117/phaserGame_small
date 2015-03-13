@@ -36,7 +36,7 @@ BasicGame.labScene.prototype = {
     
     update: function () {
         
-        if(BasicGame.labCounter === 0) {
+        if(BasicGame.labCounter === 4) {
             this.state.start('MatchPrints');
         }
         if(BasicGame.gunLabComplete === true){

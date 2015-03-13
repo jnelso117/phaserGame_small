@@ -16,7 +16,7 @@ BasicGame.Outro.prototype = {
         this.goNext = this.add.image(120,710, 'Next'); 
         this.veronica = this.add.sprite(911, 192,'Veronica');
         this.veronica.alpha = 0;
-        this.text = this.add.text(0,this.world.centerY+100, '', { font: "24px Helvetica", wordWrap: true, wordWrapWidth: 500, align: 'center',fill: '#ffffff'});
+        this.text = this.add.text(0,this.world.centerY+100, '', { font: "24px Helvetica", wordWrap: true, wordWrapWidth: 500, align: 'left',fill: '#ffffff'});
         this.text.setText("After analyzing the fingerprints. You prove that Veronica is a prime suspect in the case.");
         
     },
@@ -43,7 +43,7 @@ BasicGame.Outro.prototype = {
         }
             if (this.counter === 5)
         {
-            this.text.setText("Veronica turned herself in less than 48 hours after the murder");
+            this.text.setText("Veronica turned herself in less than 48 hours after the murder.");
         }
             if (this.counter === 6) 
         {
