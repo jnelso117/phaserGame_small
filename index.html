@@ -22,6 +22,7 @@
     <script src="states/Intermission.js"></script>
     <script src="states/LabScene.js"></script>
     <script src="states/MatchPrints.js"></script>
+    <script src="states/Title.js"></script>
     <style>
         body {
             margin: 0;
@@ -36,6 +37,7 @@ window.onload = function() {
 var game = new Phaser.Game(1600, 900, Phaser.AUTO, 'gameContainer');
     game.state.add('Boot', BasicGame.Boot);
     game.state.add('Preloader', BasicGame.Preloader); //Responsible for Assets preparation
+    game.state.add('Title', BasicGame.Title);
     game.state.add('Menu', BasicGame.Menu);
     game.state.add('crimeSceneMain', BasicGame.crimeSceneMain);
     game.state.add('glassLevel', BasicGame.glassLevel);

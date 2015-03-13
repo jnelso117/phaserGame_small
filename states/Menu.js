@@ -13,8 +13,7 @@ BasicGame.Menu.prototype = {
     create: function () {
         //this is where all your assets need to be called to be in the main menu
 
-        startBG = this.add.image(0,0, 'crimeSceneFull');
-        startBG.tint = 0x000033;
+        startBG = this.add.image(0,0, 'background');
         this.goNext = this.add.image(120,710, 'Next'); 
         this.patrick = this.add.sprite(911, 192,'Patrick');
         this.patrick.alpha = 0;

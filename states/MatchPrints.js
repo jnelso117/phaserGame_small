@@ -2,7 +2,7 @@ BasicGame.MatchPrints = function(game) {
 this.background;
 this.patrickPrint;
 this.helenPrint;
-this.VeronicaPrint;
+this.veronicaPrint;
 this.patrickPortrait;
 this.helenPortrait;
 this.VeronicaPortrait;
@@ -13,29 +13,30 @@ this.goNext;
 
 BasicGame.MatchPrints.prototype = {
     create: function() {
-        this.state.backgroundColor = '#ffffff';
+        this.background = this.add.sprite(0,0,'background');
         this.goNext = this.add.sprite(this.world.centerX,this.world.centerY,'Next');
-        this.patrickPortrait = this.add.sprite(0,600,'Patrick_small');
-        this.helenPortrait = this.add.sprite(533,600,'Helen_small');
-        this.VeronicaPortrait = this.add.sprite(1066,600,'Veronica_small');
+        this.patrickPortrait = this.add.sprite(0,450,'Patrick_small');
+        this.helenPortrait = this.add.sprite(533,450,'Helen_small');
+        this.VeronicaPortrait = this.add.sprite(1066,450,'Veronica_small');
         this.patrickPrint = this.add.sprite(0,0,'Patrick_Print');
         this.helenPrint = this.add.sprite(200, 0, 'Helen_Print');
-        this.VeronicaPrint = this.add.sprite(400,0,'Veronica_Print');
-        this.VeronicaPrintTwo = this.add.sprite(600,0,'Veronica_Print');
+        this.veronicaPrint = this.add.sprite(400,0,'Veronica_Print');
+        this.veronicaPrintTwo = this.add.sprite(600,0,'Veronica_Print');
         this.textBG = this.add.sprite(900,0,'text_bg');
         
         //enable input on the print sprites and allow drag
         this.helenPrint.inputEnabled = true;
         this.patrickPrint.inputEnabled = true;
-        this.VeronicaPrint.inputEnabled = true;
-        this.VeronicaPrintTwo.inputEnabled = true;
+        this.veronicaPrint.inputEnabled = true;
+        this.veronicaPrintTwo.inputEnabled = true;
         this.patrickPrint.input.enableDrag();
         this.helenPrint.input.enableDrag();
-        this.VeronicaPrint.input.enableDrag();
-        this.VeronicaPrintTwo.input.enableDrag();
+        this.veronicaPrint.input.enableDrag();
+        this.veronicaPrintTwo.input.enableDrag();
         this.patrickPrint.events.onDragStop.add(this.checkPatrick, this);
+        this.helenPrint.events.onDragStop.add(this.checkHelen, this);
         
-        this.response = this.add.text(this.world.centerX, 500, '',{ font: "24px Helvetica", wordWrap: true, wordWrapWidth: 500, align: 'center', fill: '#000000'});
+        this.response = this.add.text(this.world.centerX, 300, '',{ font: "24px Helvetica", wordWrap: true, wordWrapWidth: 500, align: 'center', fill: '#ffffff'});
         this.text = this.add.text(920, 20,'We have 4 fingerprints let\'s see which fingerprints belong to Patrick. Note: You can only drag items right now. Currently still being completed.', {font: '24px Helvetica', wordWrap: true,align: 'left', wordWrapWidth: this.textBG.width-100, fill:'#ffffff' });
     },
     update: function() {
@@ -45,21 +46,75 @@ BasicGame.MatchPrints.prototype = {
         
     },
     checkPatrick: function () {
-        if(this.patrickPrint.x > 533 && this.patrickPrint.y > this.world.centerY+100) {
+        if (this.patrickPrint.x < 533){
+            if(this.patrickPrint.y >= this.world.centerY) {
+            this.patrickPrint.destroy();
+            this.response.setText("Correct! This print matches the deceased victim, Patrick Evans.");
+            }
+        }
+            
+            else if(this.patrickPrint.x >= 533 ) {
             this.response.setText("This print is from the glass.");
             this.patrickPrint.x = 0;
             this.patrickPrint.y = 0;
+                  }
             
-        }
-        else if (this.patrickPrint.x <= 533 && this.patrickPrint.y >= this.world.centerY) {
-            this.patrickPrint.destroy();
-            this.response.setText("Correct! This print matches the deceased victim, Patrick Evans.");
-        }
+
         
     },
     checkVeronica: function () {
+                if(this.veronicaPrint.x < 533) {
+            if(this.veronicaPrint.y >= 450) {
+            this.veronicaPrint.x = 200;
+            this.veronicaPrint.y = 0;
+            this.response.setText("This print does not match Patrick's print. Try someone else");
+            }
+        }
+        if(this.veronicaPrint.x >=533) 
+            if(this.veronicaPrint.x <= 1066) {
+            if(this.veronicaPrint.y >= 450) {
+                this.veronicaPrint.destroy();
+                this.response.setText("This print does not match any records we have for Helen. Try another person. Doesn't this print look familiar to another print here?");
+            }
+        }
+        else if(this.veronicaPrint.x >= 1068) {
+                if(this.veronicaPrint.y >= 450) {
+                this.veronicaPrint.x = 200;
+                this.veronicaPrint.y = 0;
+                this.response.setText("This print does not match Veronica's records, try another person.");
+            }
+            }
+        
+        
     },
     checkHelen: function () {
-    }
-    
+        //if user drops print on Patrick's instead of Helen.
+        if(this.helenPrint.x < 533) {
+            if(this.helenPrint.y >= 450) {
+            this.helenPrint.x = 200;
+            this.helenPrint.y = 0;
+            this.response.setText("This print does not match Patrick's print. Try someone else");
+            }
+        }
+        else if(this.helenPrint.x < 1068) {
+            if(this.helenPrint.y < 450) {
+                this.helenPrint.x = 200;
+                this.helenPrint.y = 0;
+        }
+        }
+            else if(this.helenPrint.x >= 1068) {
+                if(this.helenPrint.y >= 450) {
+                this.helenPrint.x = 200;
+                this.helenPrint.y = 0;
+                this.response.setText("This print does not match Veronica's records, try another person.");
+            }
+            }
+        if(this.helenPrint.x >=533) 
+            if(this.helenPrint.x <= 1066) {
+            if(this.helenPrint.y >= 450) {
+                this.helenPrint.destroy();
+                this.response.setText("You got it right! The print from the newspaper belongs to the woman that neighbors know as Helen.");
+            }
+        }
+},
 }
