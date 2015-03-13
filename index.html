@@ -23,6 +23,7 @@
     <script src="states/LabScene.js"></script>
     <script src="states/MatchPrints.js"></script>
     <script src="states/Title.js"></script>
+    <script src="states/Outro.js"></script>
     <style>
         body {
             margin: 0;
@@ -54,6 +55,7 @@ var game = new Phaser.Game(1600, 900, Phaser.AUTO, 'gameContainer');
     game.state.add('postCardLab', BasicGame.postCardLab);
     game.state.add('labSceneMain', BasicGame.labScene);
     game.state.add('MatchPrints', BasicGame.MatchPrints);
+    game.state.add('Outro', BasicGame.Outro);
     game.state.start('Boot');
     
 }

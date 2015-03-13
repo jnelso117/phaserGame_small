@@ -60,7 +60,7 @@ update: function() {
             this.text.setText("After collecting your evidence, your forensic artist drew two descriptions(based on an explanation of a neighbor) of the two women that left Patrick's apartment on the day of his untimely death.");
         }
         else if(this.counter === 5) {
-            this.text.setText("Here is the portrait of the woman who left the apartment at approximately 7:18 P.M. Police have identified her as Veronica Johnson, Patrick's ex-girlfriend.");
+            this.text.setText("Here is the portrait of the woman who left the apartment at approximately 7:18 P.M. Police have identified her as Veronica Johnson, Patrick's ex-girlfriend. She has a criminal record for stalking and harassment charges.");
             this.fade = this.add.tween(this.veronica).to( { alpha: 1}, 1000, Phaser.Easing.Linear.None, true, 0, 0, false);
         }
         else if(this.counter === 6) {
