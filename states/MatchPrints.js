@@ -113,7 +113,7 @@ BasicGame.MatchPrints.prototype = {
                 this.response.setText("This print does not match any records we have for Helen. Try another person. Doesn't this print look familiar to another print here?");
             }
         }
-        else if(this.veronicaPrintTwo.x >= 1068) {
+        if(this.veronicaPrintTwo.x >= 1068) {
                 if(this.veronicaPrintTwo.y >= 450) {
                 this.veronicaPrintTwo.destroy();
                 this.counter++;
