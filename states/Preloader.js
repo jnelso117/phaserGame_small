@@ -8,6 +8,8 @@ BasicGame.Preloader.prototype = {
     this.load.image('text_bg','assets/text_background.png');
     this.load.image('crimeScene', 'assets/Crime_Scene/Crime_Background.png');
     this.load.image('crimeSceneFull', 'assets/linvilleCrimeSceneFinal-Crime.png');
+    this.load.image('Title_Screen','assets/Title.jpg');
+    this.load.image('background','assets/background.jpg');
     this.load.image('labScene', 'assets/Lab/linville-lab-empty.png');
     this.load.image('Patrick','assets/Characters/Patrick.png');
     this.load.image('Patrick_small', 'assets/Characters/Patrick_small.png');
@@ -58,7 +60,7 @@ create: function () {
     
 update: function() {
     this.ready = true;
-    this.state.start('Menu');
+    this.state.start('Title');
 }
     
 };

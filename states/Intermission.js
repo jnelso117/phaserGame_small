@@ -14,16 +14,16 @@ BasicGame.Intermission = function(game) {
 BasicGame.Intermission.prototype = {
     
 create: function() {
-    this.stage.backgroundClip = '#ffffff';
+    this.background = this.add.image(0,0,'background');
     this.goNext = this.add.sprite(120, 720,'Next');
     
     //Text
-    this.text = this.add.text(50,this.world.centerY+150, 'You found a lot of clues to this case, including two fingerprints.', { font: '24px Helvetica', wordWrap: true, wordWrapWidth: 500, align: 'center',fill: '#000000' });
+    this.text = this.add.text(50,this.world.centerY+150, 'You found a lot of clues to this case, including two fingerprints.', { font: '24px Helvetica', wordWrap: true, wordWrapWidth: 500, align: 'left',fill: '#ffffff' });
     this.text.setShadow(0, 0, 'rgba(0, 0, 0, 2)', 0);
     //Fingerprints
     this.knobPrint = this.add.image(0, this.world.centerY-200, 'Veronica_Print');
     this.glassPrint = this.add.image(200, this.world.centerY-200, 'Patrick_Print');
-    this.helen = this.add.image(1067,600,'Helen_small');
+    this.helen = this.add.image(1067,450,'Helen_small');
     this.veronica = this.add.image(1067, 0, 'Veronica_small');
     this.goNext.inputEnabled = true;
     this.goNext.events.onInputDown.add(this.enableClick,this);
