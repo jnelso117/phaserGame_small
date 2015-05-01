@@ -21,50 +21,62 @@ BasicGame.crimeSceneMain = function (game) {
 
     //	You can use any of these from any function within this State.
     //	But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
-    this.BG;
     //Items are named from left to right and top to bottom.  
     //Items 1-3 are the top items and 4-6 are the bottom.
+    this.BG;
     this.drinkingGlass;
     this.doorKnob;
     this.gun;
     this.newspaper;
     this.paperDoc;
     this.sodaCan;
-    this.text = '';
-
-};
+    
+    //Tweens
+    this.tweenGlass;
+    this.tweenKnob;
+    this.tweenGun;
+    this.tweenPaper;
+    this.tweenDoc;
+    this.tweenCan;
+    };
 
 BasicGame.crimeSceneMain.prototype = {
 
 	create: function () {
-        this.BG = this.add.image(0,0,'crimeScene');
-        this.BG.tint = 0x9999FF;
-        this.drinkingGlass = this.add.image(629,573, 'Table_Glass');
-        this.tweenGlass = this.add.tween(this.drinkingGlass).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);
-        this.doorKnob = this.add.image(446,302, 'Door_Knob');
-        this.tweenKnob = this.add.tween(this.doorKnob).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);;
-        this.gun = this.add.image(604, 830, 'Table_Gun');
-        this.tweenGun = this.add.tween(this.gun).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);;
-        this.newspaper = this.add.image(855,446, 'Table_Newspaper');
-        this.paperTween = this.add.tween(this.newspaper).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);;
-        this.paperDoc = this.add.image(424, 630, 'Table_Card');
-        this.docTween = this.add.tween(this.paperDoc).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);;
-        this.sodaCan = this.add.image(525,561, 'Table_Can');
-        this.canTween = this.add.tween(this.sodaCan).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);
+        BG = this.add.image(0,0,'crimeScene');
+        //Tinting the background so it gives a darker feel.
+        BG.tint = 0x9999FF;
+        //Items added to the canvas
+        drinkingGlass = this.add.image(629,573, 'Table_Glass');
+        doorKnob = this.add.image(446,302, 'Door_Knob');
+        gun = this.add.image(604, 830, 'Table_Gun');
+        newspaper = this.add.image(855,446, 'Table_Newspaper');
+        paperDoc = this.add.image(424, 630, 'Table_Card');
+        sodaCan = this.add.image(525,561, 'Table_Can');
+        
+        //Tweens that give the items a blinking feel
+        tweenGlass = this.add.tween(drinkingGlass).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);
+        tweenKnob = this.add.tween(doorKnob).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);;
+        tweenGun = this.add.tween(gun).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);;
+        tweenPaper = this.add.tween(newspaper).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);;
+        tweenDoc = this.add.tween(paperDoc).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);;
+        tweenCan = this.add.tween(sodaCan).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 1, true);
+
         // Enable Input for the images
-        this.drinkingGlass.inputEnabled = true;
-        this.doorKnob.inputEnabled = true;
-        this.gun.inputEnabled = true;
-        this.newspaper.inputEnabled = true;
-        this.paperDoc.inputEnabled = true;
-        this.sodaCan.inputEnabled = true;
+        drinkingGlass.inputEnabled = true;
+        doorKnob.inputEnabled = true;
+        gun.inputEnabled = true;
+        newspaper.inputEnabled = true;
+        paperDoc.inputEnabled = true;
+        sodaCan.inputEnabled = true;
+        
         // On input, run the function listed in the parameter
-        this.drinkingGlass.events.onInputDown.add(this.startGlassLevel,this);
-        this.doorKnob.events.onInputDown.add(this.startKnobLevel, this);
-        this.gun.events.onInputDown.add(this.startWeaponLevel, this);
-        this.newspaper.events.onInputDown.add(this.startPaperLevel, this);
-        this.paperDoc.events.onInputDown.add(this.startpostCardLevel, this);
-        this.sodaCan.events.onInputDown.add(this.startCanLevel, this);
+        drinkingGlass.events.onInputDown.add(this.startGlassLevel,this);
+        doorKnob.events.onInputDown.add(this.startKnobLevel, this);
+        gun.events.onInputDown.add(this.startWeaponLevel, this);
+        newspaper.events.onInputDown.add(this.startPaperLevel, this);
+        paperDoc.events.onInputDown.add(this.startpostCardLevel, this);
+        sodaCan.events.onInputDown.add(this.startCanLevel, this);
 		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         //this shows how many stages have been completeds
         
@@ -97,40 +109,40 @@ BasicGame.crimeSceneMain.prototype = {
         function usually.  
         
         ********************************************/
-         if (BasicGame.crimeCounter === 6) //checks to see if the levels were cleared
+         if (BasicGame.crimeCounter === 1) //checks to see if the levels were cleared
         {
             this.startIntermission();
         }
         
          if (BasicGame.glassLevelComplete === true) 
          { 
-            this.drinkingGlass.inputEnabled = false; //user can no longer access stage
-            this.drinkingGlass.destroy(); 
+            drinkingGlass.inputEnabled = false; //user can no longer access stage
+            drinkingGlass.destroy(); 
         }
         if (BasicGame.knobLevelComplete === true) 
         {
-            this.doorKnob.inputEnabled = false; //user can no longer access stage
-            this.doorKnob.destroy();
+            doorKnob.inputEnabled = false; //user can no longer access stage
+            doorKnob.destroy();
         }
         if (BasicGame.weaponLevelComplete === true)
         {
-            this.gun.inputEnabled  = false;
-            this.gun.destroy();
+            gun.inputEnabled  = false;
+            gun.destroy();
         }
         if (BasicGame.paperLevelComplete === true)
         {
-            this.newspaper.inputEnabled = false;
-            this.newspaper.destroy();
+            newspaper.inputEnabled = false;
+            newspaper.destroy();
         }
         if (BasicGame.postCardLevelComplete === true)
         {
-            this.paperDoc.inputEnabled = false;
-            this.paperDoc.destroy();
+            paperDoc.inputEnabled = false;
+            paperDoc.destroy();
         }
         if (BasicGame.canLevelComplete === true)
         {
-            this.sodaCan.inputEnabled = false;
-            this.sodaCan.destroy();
+            sodaCan.inputEnabled = false;
+            sodaCan.destroy();
         }
        
 

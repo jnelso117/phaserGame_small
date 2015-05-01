@@ -51,6 +51,7 @@ BasicGame.Preloader.prototype = {
     this.load.image('Patrick_Print', 'assets/fingerprints/arch.png');
     this.load.image('Helen_Print', 'assets/fingerprints/whorl.png');
     this.load.image('Veronica_Print','assets/fingerprints/loop.png');
+    this.load.image('Helen_Print_Small', 'assets/fingerprints/whorl_black.png');
    
     },  
     

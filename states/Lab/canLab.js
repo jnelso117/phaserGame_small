@@ -61,18 +61,18 @@ BasicGame.canLab.prototype = {
     
     update: function () {
         if(BasicGame.gunLabComplete === true){
-            this.gunPrint.alpha = 1;
+            gunPrint.alpha = 1;
             this.gun.destroy();
         }
         if(BasicGame.canLabComplete === true){
-            this.can.destroy();
+            can.destroy();
         }
         if(BasicGame.paperLabComplete === true) {
-            this.paperPrint.alpha = 1;
-            this.newspaper.destroy();
+            paperPrint.alpha = 1;
+            newspaper.destroy();
         }
         if(BasicGame.documentLabCompelte === true) {
-            this.postCard.destroy();
+            postCard.destroy();
         }
     
     },
