@@ -61,4 +61,7 @@ BasicGame.Menu.prototype = {
         this.counter++;
      
     },
+    
+    shutdown: function() {
+    },
 }

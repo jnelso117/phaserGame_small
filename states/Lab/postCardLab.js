@@ -19,13 +19,19 @@ BasicGame.postCardLab.prototype = {
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
         this.postCard = this.add.sprite(944, 436, 'Lab_Card');
         this.textBG = this.add.sprite(350, 680, 'text_bg');
-        this.gunPrint = this.add.sprite(544,-10,'Veronica_Print');
+        this.gunPrint = this.add.sprite(544,0,'Veronica_Print');
+        this.paperPrint = this.add.sprite(944,0,'Helen_Print');
+        
+        //Alphas
         this.gunPrint.alpha = 0;
-        this.paperPrint = this.add.sprite(944,-15,'Helen_Print');
-        this.paperPrint.alpha = 0; 
+        this.paperPrint.alpha = 0;
+        
+        //Tints
         this.gun.tint = 0x9999FF;
         this.newspaper.tint = 0x9999FF;
         this.can.tint = 0x9999FF;
+        this.paperPrint.tint = 0x9999FF;
+        this.gunPrint.tint = 0x9999FF;
         ninhydrin = this.add.sprite(800, 550, 'Use_Ninhydrin');
         superglue = this.add.sprite(300, 550, 'Use_Superglue');
         returnBack = this.add.sprite(0,0,'Back');
@@ -56,7 +62,7 @@ BasicGame.postCardLab.prototype = {
             this.paperPrint.alpha = 1;
             this.newspaper.destroy();
         }
-        if(BasicGame.documentLabCompelte === true) {
+        if(BasicGame.postCardLabComplete === true) {
             this.postCard.destroy();
         }
     },
@@ -68,7 +74,7 @@ BasicGame.postCardLab.prototype = {
     
     useNinhydrin: function () {
      BasicGame.labCounter++;
-    BasicGame.canLabComplete = true;
+    BasicGame.postCardLabComplete = true;
     ninhydrin.loadTexture('Correct_Ninhydrin');
     returnBack.loadTexture('Next');
     this.response.setText("Good idea!  Ninhydrin works on porous items like paper. Unfortunately, there are not any usable prints on this item.");

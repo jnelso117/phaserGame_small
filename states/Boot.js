@@ -25,7 +25,7 @@ var BasicGame = {
     canLabComplete: false,
     gunLabComplete: false,
     newspaperComplete: false,
-    documentLabComplete: false,
+    postCardLabComplete: false,
     
 };
 

@@ -32,9 +32,9 @@ BasicGame.paperLab.prototype = {
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
         this.postCard = this.add.sprite(944, 436, 'Lab_Card');
         this.textBG = this.add.sprite(350, 680, 'text_bg'); 
-        this.gunPrint = this.add.sprite(544,-10,'Veronica_Print');
+        this.gunPrint = this.add.sprite(544,0,'Veronica_Print');
         this.gunPrint.alpha = 0;
-        this.helenPrint = this.add.sprite(944,-15,'Helen_Print');
+        this.helenPrint = this.add.sprite(944,0,'Helen_Print');
         this.helenPrint.alpha = 0;
         
         this.gun.tint = 0x9999FF;
@@ -75,7 +75,7 @@ BasicGame.paperLab.prototype = {
         if(BasicGame.paperLabComplete === true) {
             this.newspaper.destroy();
         }
-        if(BasicGame.documentLabCompelte === true) {
+        if(BasicGame.postCardLabComplete === true) {
             this.postCard.destroy();
         }
     },

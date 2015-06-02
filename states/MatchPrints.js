@@ -25,12 +25,12 @@ this.counter = 0;
 BasicGame.MatchPrints.prototype = {
     create: function() {
         this.background = this.add.sprite(0,0,'background');
-        patrickPortrait = this.add.sprite(0,450,'Patrick_small');
-        helenPortrait = this.add.sprite(533,450,'Helen_small');
-        VeronicaPortrait = this.add.sprite(1066,450,'Veronica_small');
+        patrickPortrait = this.add.sprite(0,450,'Patrick_and_Print');
+        helenPortrait = this.add.sprite(533,450,'Helen_and_Print');
+        VeronicaPortrait = this.add.sprite(1066,450,'Veronica_and_Print');
         patrickPrint = this.add.sprite(0,0,'Patrick_Print');
         helenPrint = this.add.sprite(200, 0, 'Helen_Print');
-        helenPrintSmall = this.add.sprite(700,450,'Helen_Print_Small');
+        //helenPrintSmall = this.add.sprite(700,450,'Helen_Print_Small');
         veronicaPrint = this.add.sprite(400,0,'Veronica_Print');
         veronicaPrintTwo = this.add.sprite(600,0,'Veronica_Print');
         textBG = this.add.sprite(900,0,'text_bg');
@@ -165,4 +165,6 @@ BasicGame.MatchPrints.prototype = {
             }
         }
 },
+    shutdown: function() {
+    },
 }

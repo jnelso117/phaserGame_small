@@ -17,7 +17,7 @@ this.newspaper;
 this.postCard;
 this.response;
 this.textBG;
-this.veronicaPrint;
+this.gunPrint;
 this.paperPrint;
 this.printAppear;
 };
@@ -33,14 +33,16 @@ BasicGame.gunLab.prototype = {
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
         this.postCard = this.add.sprite(944, 436, 'Lab_Card');
         this.textBG = this.add.sprite(350, 680,'text_bg');
-        this.paperPrint = this.add.sprite(944,-15,'Helen_Print');
+        this.paperPrint = this.add.sprite(944,0,'Helen_Print');
         this.paperPrint.alpha = 0; 
-        this.veronicaPrint = this.add.sprite(544, -10,'Veronica_Print');
-        this.veronicaPrint.alpha = 0;
+        this.gunPrint = this.add.sprite(544, 0,'Veronica_Print');
+        this.gunPrint.alpha = 0;
         
         this.can.tint = 0x9999FF;
         this.newspaper.tint = 0x9999FF;
         this.postCard.tint = 0x9999FF;
+        this.gunPrint.tint = 0x9999FF;
+        this.paperPrint.tint = 0x9999FF;
         
         //Enable input on the items
         ninhydrin = this.add.sprite(800, 550, 'Use_Ninhydrin');
@@ -72,7 +74,7 @@ BasicGame.gunLab.prototype = {
             this.paperPrint.alpha = 1;
             this.newspaper.destroy();
         }
-        if(BasicGame.documentLabComplete === true) {
+        if(BasicGame.postCardLabComplete === true) {
             this.postCard.destroy();
         }
     },
@@ -83,7 +85,7 @@ BasicGame.gunLab.prototype = {
     superglue.loadTexture('Correct_Superglue');
     returnBack.loadTexture('Next');
     this.response.setText("Good idea!  Super glue fuming works on non-porous items.  A white print appears on the gun.  You dust, tape lift, and photograph the fumed print.");
-    this.printAppear = this.add.tween(this.veronicaPrint).to({alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0, 0, false);
+    this.printAppear = this.add.tween(this.gunPrint).to({alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0, 0, false);
     superglue.inputEnabled = false;
     ninhydrin.inputEnabled = false;
     },

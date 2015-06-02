@@ -16,4 +16,7 @@ BasicGame.Title.prototype = {
     startGame: function() {
         this.state.start('Menu');
     },
+    
+    shutdown: function() {
+    },
 }

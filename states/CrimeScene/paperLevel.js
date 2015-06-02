@@ -11,31 +11,40 @@
     
 BasicGame.paperLevel = function(game) {
  this.background;
- this.image; //image for the level
- this.returnBack; //return to the Menu
+ this.drinkingGlass;
+ this.doorKnob;
+ this.gun;
+ this.newspaper;
+ this.paperDoc;
+ this.sodaCan;
  this.textBG;
+ this.poweder;
+ this.glue;
+ this.ninhydrin;
+ this.collect;
+ this.returnBack; //return to the Menu
  
 };
 BasicGame.paperLevel.prototype = {
     
    create: function () {
         //adding the images to the canvas
-        this.BG = this.add.image(0,0,'crimeScene');
-        this.drinkingGlass = this.add.image(629,573, 'Table_Glass');
-        this.doorKnob = this.add.image(446,302, 'Door_Knob');
-        this.gun = this.add.image(604, 830, 'Table_Gun');
-        this.newspaper = this.add.image(855,446, 'Table_Newspaper');
-        this.paperDoc = this.add.image(424, 630, 'Table_Card');
-        this.sodaCan = this.add.image(525,561, 'Table_Can');
-        this.textBG = this.add.sprite(this.world.centerX+95,700,'text_bg');
+        background = this.add.image(0,0,'crimeScene');
+        drinkingGlass = this.add.image(629,573, 'Table_Glass');
+        doorKnob = this.add.image(446,302, 'Door_Knob');
+        gun = this.add.image(604, 830, 'Table_Gun');
+        newspaper = this.add.image(855,446, 'Table_Newspaper');
+        paperDoc = this.add.image(424, 630, 'Table_Card');
+        sodaCan = this.add.image(525,561, 'Table_Can');
+        textBG = this.add.sprite(this.world.centerX+95,700,'text_bg');
        
        //Adding a tint to all other objects to give the game a more focused feel
-        this.BG.tint = 0x9999FF;
-        this.drinkingGlass.tint = 0x9999FF;
-        this.doorKnob.tint = 0x9999FF;
-        this.gun.tint = 0x9999FF;
-        this.sodaCan.tint = 0x9999FF;
-        this.paperDoc.tint = 0x9999FF;
+        background.tint = 0x9999FF;
+        drinkingGlass.tint = 0x9999FF;
+        doorKnob.tint = 0x9999FF;
+        gun.tint = 0x9999FF;
+        sodaCan.tint = 0x9999FF;
+        paperDoc.tint = 0x9999FF;
        
        
         powder = this.add.sprite(this.world.centerX+400, this.world.centerY-300, 'Use_Powder');
@@ -61,40 +70,40 @@ BasicGame.paperLevel.prototype = {
 
         
         //How the text will look
-        this.response = this.add.text(this.world.centerX+200,this.world.centerY+275, 'Which fingerprinting process is best for this piece of evidence?', { font: "24px Helvetica", align: 'left', wordWrap: true, wordWrapWidth: this.textBG.width-100, fill: '#ffffff' });
+        response = this.add.text(this.world.centerX+200,this.world.centerY+275, 'Which fingerprinting process is best for this piece of evidence?', { font: "24px Helvetica", align: 'left', wordWrap: true, wordWrapWidth: textBG.width-100, fill: '#ffffff' });
         
     },
     update: function () {
 
          if (BasicGame.glassLevelComplete === true) 
          { 
-            this.drinkingGlass.inputEnabled = false; //user can no longer access stage
-            this.drinkingGlass.destroy(); 
+            drinkingGlass.inputEnabled = false; //user can no longer access stage
+            drinkingGlass.destroy(); 
         }
         if (BasicGame.knobLevelComplete === true) 
         {
-            this.doorKnob.inputEnabled = false; //user can no longer access stage
-            this.doorKnob.destroy();
+            doorKnob.inputEnabled = false; //user can no longer access stage
+            doorKnob.destroy();
         }
         if (BasicGame.weaponLevelComplete === true)
         {
-            this.gun.inputEnabled  = false;
-            this.gun.destroy();
+            gun.inputEnabled  = false;
+            gun.destroy();
         }
         if (BasicGame.paperLevelComplete === true)
         {
-            this.newspaper.inputEnabled = false;
-            this.newspaper.destroy();
+            newspaper.inputEnabled = false;
+            newspaper.destroy();
         }
         if (BasicGame.postCardLevelComplete === true)
         {
-            this.paperDoc.inputEnabled = false;
-            this.paperDoc.destroy();
+            paperDoc.inputEnabled = false;
+            paperDoc.destroy();
         }
         if (BasicGame.canLevelComplete === true)
         {
-            this.sodaCan.inputEnabled = false;
-            this.sodaCan.destroy();
+            sodaCan.inputEnabled = false;
+            sodaCan.destroy();
         }
        
         
@@ -106,16 +115,16 @@ BasicGame.paperLevel.prototype = {
     
     usePowder: function () {
     powder.loadTexture('Incorrect_Powder');   
-    this.response.setText("Oils from fingerprints are absorbed into porous materials like a newspaper.  A brush and black powder is not very good at developing prints on porous items.  Try something else.");
+    response.setText("Oils from fingerprints are absorbed into porous materials like a newspaper.  A brush and black powder is not very good at developing prints on porous items.  Try something else.");
     },
     useSuperGlue: function () {
     glue.loadTexture('Incorrect_Superglue');
-    this.response.setText("Super glue works best on nonporous items.  Besides, you are not able to fume an item at the crime scene. Try something else.");
+    response.setText("Super glue works best on nonporous items.  Besides, you are not able to fume an item at the crime scene. Try something else.");
     },
     
     useNinhydrin: function () {
     ninhydrin.loadTexture('Incorrect_Ninhydrin');
-    this.response.setText("Ninhydrin does work best on porous items, but ninhydrin is difficult to apply to items at the scene.  Try something else.");
+    response.setText("Ninhydrin does work best on porous items, but ninhydrin is difficult to apply to items at the scene.  Try something else.");
         
     },
     collectItem: function () { 
@@ -129,7 +138,7 @@ BasicGame.paperLevel.prototype = {
     ninhydrin.inputEnabled = false;
     collect.inputEnabled = false;
     BasicGame.paperLevelComplete = true;
-    this.response.setText("Good idea!  The newspaper can be removed from the crime scene and this porous item can more easily be processed back at the lab. Click Next to process more evidence.");
+    response.setText("Good idea!  The newspaper can be removed from the crime scene and this porous item can more easily be processed back at the lab. Click Next to process more evidence.");
     },
 
 

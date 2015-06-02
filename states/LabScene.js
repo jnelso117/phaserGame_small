@@ -11,47 +11,49 @@ BasicGame.labScene.prototype = {
     
     create: function () {
         //this is where all your assets need to be called to be in the main menu
-        this.background = this.add.image(0,0,'labScene');
-        this.can = this.add.sprite(344, 380, 'Lab_Can');
-        this.gun = this.add.sprite(544, 436, 'Lab_Gun');
-        this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
-        this.postCard = this.add.sprite(944, 436, 'Lab_Card');
-        this.gunPrint = this.add.sprite(544,-10,'Veronica_Print');
-        this.gunPrint.alpha = 0;
-        this.paperPrint = this.add.sprite(944,-15,'Helen_Print');
-        this.paperPrint.alpha = 0;
+        background = this.add.image(0,0,'labScene');
+        can = this.add.sprite(344, 380, 'Lab_Can');
+        gun = this.add.sprite(544, 436, 'Lab_Gun');
+        newspaper = this.add.sprite(744, 436, 'Lab_Paper');
+        postCard = this.add.sprite(944, 436, 'Lab_Card');
+        gunPrint = this.add.sprite(544,0,'Veronica_Print');
+        gunPrint.alpha = 0;
+        gunPrint.tint = 0x9999FF;
+        paperPrint = this.add.sprite(944,0,'Helen_Print');
+        paperPrint.alpha = 0;
+        paperPrint.tint = 0x9999FF;
         // On input, run the function listed in the parameter
-        this.can.inputEnabled = true;
-        this.gun.inputEnabled = true;
-        this.newspaper.inputEnabled = true;
-        this.postCard.inputEnabled = true;
+        can.inputEnabled = true;
+        gun.inputEnabled = true;
+        newspaper.inputEnabled = true;
+        postCard.inputEnabled = true;
         
         
-      this.can.events.onInputDown.add(this.startCanLevel, this);
-      this.gun.events.onInputDown.add(this.startWeaponLevel, this);
-      this.newspaper.events.onInputDown.add(this.startPaperLevel, this);
-      this.postCard.events.onInputDown.add(this.startCardLevel, this);
+      can.events.onInputDown.add(this.startCanLevel, this);
+      gun.events.onInputDown.add(this.startWeaponLevel, this);
+      newspaper.events.onInputDown.add(this.startPaperLevel, this);
+      postCard.events.onInputDown.add(this.startCardLevel, this);
        
     },
     
     update: function () {
         
-        if(BasicGame.labCounter === 0) {
+        if(BasicGame.labCounter === 4) {
             this.state.start('MatchPrints');
         }
         if(BasicGame.gunLabComplete === true){
-            this.gunPrint.alpha = 1;
-            this.gun.destroy();
+            gunPrint.alpha = 1;
+            gun.destroy();
         }
         if(BasicGame.canLabComplete === true){
-            this.can.destroy();
+            can.destroy();
         }
         if(BasicGame.paperLabComplete === true) {
-            this.paperPrint.alpha = 1;
-            this.newspaper.destroy();
+            paperPrint.alpha = 1;
+            newspaper.destroy();
         }
-        if(BasicGame.documentLabCompelte === true) {
-            this.postCard.destroy();
+        if(BasicGame.postCardLabComplete === true) {
+            postCard.destroy();
         }
 
 	},
@@ -71,5 +73,14 @@ BasicGame.labScene.prototype = {
     startCanLevel: function (pointer) {
         
         this.state.start('canLab');
+    },
+
+
+    shutdown: function() {
+        //Bug: Keeps the game in an infinite loop.  Shutdown method
+        //supposedly is called when the state shuts down, or when the
+        //user leaves the scene.  
+        //BasicGame.labCounter = 0;
+        
     },
 }

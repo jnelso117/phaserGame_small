@@ -52,6 +52,15 @@ BasicGame.Preloader.prototype = {
     this.load.image('Helen_Print', 'assets/fingerprints/whorl.png');
     this.load.image('Veronica_Print','assets/fingerprints/loop.png');
     this.load.image('Helen_Print_Small', 'assets/fingerprints/whorl_black.png');
+    
+    //The characters with their Fingerprints
+    this.load.image('Patrick_and_Print', 'assets/characters/Patrick_and_Print.png');
+    this.load.image('Helen_and_Print', 'assets/characters/Helen_and_Print.png');
+    this.load.image('Veronica_and_Print', 'assets/characters/Veronica_and_Print.png');
+        
+    //UAB Digital Media Logo
+    this.load.image('Logo','assets/UAB_DM_Logo-01.png');
+    this.load.script('gray','https://cdn.rawgit.com/photonstorm/phaser/master/filters/Gray.js');
    
     },  
     

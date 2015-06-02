@@ -20,5 +20,7 @@ BasicGame.gameOver.prototype = {
         BasicGame.diamondDone = true;
         BasicGame.aidDone = true;
          this.state.start('Preloader');   
-        }
+        },
+    shutdown: function() {
+    },
 }

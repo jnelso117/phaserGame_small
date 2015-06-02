@@ -53,5 +53,8 @@ BasicGame.Outro.prototype = {
     enableClick: function () {
         this.counter++;
     },
+    
+    shutdown: function() {
+    },
 }
 

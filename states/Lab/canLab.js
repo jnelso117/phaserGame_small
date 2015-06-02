@@ -28,19 +28,19 @@ BasicGame.canLab.prototype = {
         
     //this is where all your assets need to be called to be in the main menu
         this.background = this.add.image(0,0,'labScene');
-        this.can = this.add.sprite(344, 380, 'Lab_Can');
+        can = this.add.sprite(344, 380, 'Lab_Can');
         this.gun = this.add.sprite(544, 436, 'Lab_Gun');
         this.newspaper = this.add.sprite(744, 436, 'Lab_Paper');
-        this.postCard = this.add.sprite(944, 436, 'Lab_Card');
+        postCard = this.add.sprite(944, 436, 'Lab_Card');
         this.textBG = this.add.sprite(350, 680, 'text_bg');
-        this.gunPrint = this.add.sprite(544,-10,'Veronica_Print');
+        this.gunPrint = this.add.sprite(544,0,'Veronica_Print');
         this.gunPrint.alpha = 0;
-        this.paperPrint = this.add.sprite(944,-15,'Helen_Print');
+        this.paperPrint = this.add.sprite(944,0,'Helen_Print');
         this.paperPrint.alpha = 0; 
         
         this.gun.tint = 0x9999FF;
         this.newspaper.tint = 0x9999FF;
-        this.postCard.tint = 0x9999FF;
+        postCard.tint = 0x9999FF;
         
         ninhydrin = this.add.sprite(800, 550, 'Use_Ninhydrin');
         superglue = this.add.sprite(300, 550, 'Use_Superglue');
@@ -71,7 +71,7 @@ BasicGame.canLab.prototype = {
             paperPrint.alpha = 1;
             newspaper.destroy();
         }
-        if(BasicGame.documentLabCompelte === true) {
+        if(BasicGame.postCardLabComplete === true) {
             postCard.destroy();
         }
     
